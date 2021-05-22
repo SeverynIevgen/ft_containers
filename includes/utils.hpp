@@ -898,29 +898,32 @@ struct map_cell
     bool empty;
 };
 
-template <typename Key, typename T, typename Point, typename Ref>
+template <typename Key, typename T, typename Pointer, typename Ref>
 class map_iterator
 {
 public:
     typedef std::pair<Key, T> cell_type;
-    typedef map_iterator<Key, T, Point, Ref> iterator;
+    typedef map_iterator<Key, T, Pointer, Ref> iterator;
 
 private:
-    // Cell<Key, T, Compare> base;
-    // t_cell<Key, T> *ptr;
     typedef map_cell<Key, T> *pointer;
     pointer _ptr;
     pointer _incr(pointer ptr)
     {
-        pointer p_next = nullptr;
+        pointer p_next;
         if (ptr->right)
         {
             p_next = ptr->right;
             while (p_next->left)
                 p_next = p_next->left;
         }
-        else if (ptr->parent && ptr->parent->left == ptr)
-            p_next = ptr->parent;
+        else
+        {
+            p_next = ptr;
+            while (p_next->parent && p_next == p_next->parent->right)
+                p_next = p_next->parent;
+            p_next = p_next->parent;
+        }
         return (p_next);
     };
     pointer _decr(pointer ptr)
@@ -932,8 +935,13 @@ private:
             while (p_prev->right)
                 p_prev = p_prev->right;
         }
-        else if (ptr->parent && ptr->parent->right == ptr)
-            p_prev = ptr->parent;
+        else
+        {
+            p_prev = ptr;
+            while (p_prev->parent && p_prev == p_prev->parent->left)
+                p_prev = p_prev->parent;
+            p_prev = p_prev->parent;
+        }
         return (p_prev);
     };
 
@@ -946,7 +954,7 @@ public:
 
     map_iterator &operator=(const map_iterator &mapIterator)
     {
-        _ptr = mapIterator._ptr;
+        this->_ptr = mapIterator._ptr;
         return (*this);
     }
 
@@ -958,7 +966,7 @@ public:
 
     map_iterator &operator++()
     {
-        _ptr = _incr(_ptr);
+        this->_ptr = _incr(_ptr);
         return (*this);
     }
 
@@ -972,7 +980,7 @@ public:
 
     map_iterator &operator--()
     {
-        _ptr = _decr(_ptr);
+        this->_ptr = _decr(_ptr);
         return (*this);
     }
 
@@ -985,33 +993,128 @@ public:
 
     bool operator==(const map_iterator &mapIterator)
     {
-        return (_ptr == mapIterator._ptr);
+        return (this->_ptr == mapIterator._ptr);
     }
 
     bool operator!=(const map_iterator &mapIterator)
     {
-        return (_ptr != mapIterator._ptr);
+        return (this->_ptr != mapIterator._ptr);
     }
 
     bool operator!=(const map_iterator &mapIterator) const
     {
-        return (_ptr != mapIterator.ptr);
+        return (this->_ptr != mapIterator.ptr);
+    }
+};
+
+template <typename Key, typename T, typename Pointer, typename Ref>
+class reverse_map_iterator
+{
+public:
+    typedef std::pair<Key, T> cell_type;
+    typedef reverse_map_iterator<Key, T, Pointer, Ref> reverse_iterator;
+    // typedef reverse_map_iterator<Key, T, T *, T &> iterator; // TODO Really?
+
+private:
+    typedef map_cell<Key, T> *pointer;
+    pointer _ptr;
+    pointer _incr(pointer ptr)
+    {
+        pointer p_next;
+        if (ptr->right)
+        {
+            p_next = ptr->right;
+            while (p_next->left)
+                p_next = p_next->left;
+        }
+        else
+        {
+            p_next = ptr;
+            while (p_next->parent && p_next == p_next->parent->right)
+                p_next = p_next->parent;
+            p_next = p_next->parent;
+        }
+        return (p_next);
+    };
+    pointer _decr(pointer ptr)
+    {
+        pointer p_prev = nullptr;
+        if (ptr->left)
+        {
+            p_prev = ptr->left;
+            while (p_prev->right)
+                p_prev = p_prev->right;
+        }
+        else
+        {
+            p_prev = ptr;
+            while (p_prev->parent && p_prev == p_prev->parent->left)
+                p_prev = p_prev->parent;
+            p_prev = p_prev->parent;
+        }
+        return (p_prev);
+    };
+
+public:
+    reverse_map_iterator() : _ptr(nullptr) {}
+    reverse_map_iterator(pointer p) : _ptr(p) {}
+    reverse_map_iterator(const reverse_iterator &mapIterator) { *this = mapIterator; }
+
+    virtual ~reverse_map_iterator() {}
+
+    reverse_map_iterator &operator=(const reverse_iterator &mapIterator)
+    {
+        this->_ptr = mapIterator._ptr;
+        return (*this);
     }
 
-    // std::pair<const Key, T> &operator*()
-    // {
-    //     return (*_ptr->value);
-    // }
+    pointer getPtr() { return (_ptr); }
+    void setPtr(pointer ptr) { this->_ptr = ptr; }
 
-    // std::pair<const Key, T> *operator->()
-    // {
-    //     return (ptr->value);
-    // }
+    cell_type &operator*() { return (_ptr->value); }
+    cell_type *operator->() { return (&_ptr->value); }
 
-    // cell_t<Key, T> *getCell() const
-    // {
-    //     return ptr;
-    // }
+    reverse_map_iterator &operator++()
+    {
+        this->_ptr = _decr(_ptr);
+        return (*this);
+    }
+
+    const reverse_map_iterator operator++(int)
+    {
+
+        reverse_map_iterator ret(*this);
+        this->operator++();
+        return (ret);
+    }
+
+    reverse_map_iterator &operator--()
+    {
+        this->_ptr = _incr(_ptr);
+        return (*this);
+    }
+
+    const reverse_map_iterator operator--(int)
+    {
+        reverse_map_iterator ret(*this);
+        this->operator--();
+        return (ret);
+    }
+
+    bool operator==(const reverse_map_iterator &mapIterator)
+    {
+        return (this->_ptr == mapIterator._ptr);
+    }
+
+    bool operator!=(const reverse_map_iterator &mapIterator)
+    {
+        return (this->_ptr != mapIterator._ptr);
+    }
+
+    bool operator!=(const reverse_map_iterator &mapIterator) const
+    {
+        return (this->_ptr != mapIterator.ptr);
+    }
 };
 
 template <bool B, class T = void>

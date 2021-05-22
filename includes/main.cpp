@@ -42,7 +42,7 @@
 //   return 0;
 // }
 
-// // --------------vector::swap--------------
+// // --------------map::swap--------------
 // int main () {
 //   ft::vector<int> foo(3, 100);   // three ints with a value of 100
 //   ft::vector<int> bar(5, 200);   // five ints with a value of 200
@@ -76,7 +76,7 @@
 //   return 0;
 // }
 
-// // --------------vector::erase--------------
+// // --------------map::erase--------------
 // int main() {
 //   ft::vector<int> myvector;
 
@@ -97,7 +97,7 @@
 //   return 0;
 // }
 
-// // --------------vector::insert--------------
+// // --------------map::insert--------------
 // int main () {
 //   ft::vector<int> myvector(3, 100);
 //   ft::vector<int>::iterator it;
@@ -136,7 +136,7 @@
 //   return 0;
 // }
 
-// // --------------vector::pop_back--------------
+// // --------------map::pop_back--------------
 // int main () {
 //   std::vector<int> myvector;
 //   int sum = 0;
@@ -164,8 +164,8 @@
 //   return 0;
 // }
 
-// // --------------vector::clear--------------
-// // --------------vector::push_back--------------
+// // --------------map::clear--------------
+// // --------------map::push_back--------------
 // int main () {
 //   ft::vector<int> myvector;
 //   myvector.push_back(100);
@@ -191,7 +191,7 @@
 //   return 0;
 // }
 
-// // --------------vector::assign--------------
+// // --------------map::assign--------------
 // int main () {
 //   ft::vector<int> first;
 //   ft::vector<int> second;
@@ -227,7 +227,7 @@
 //   return 0;
 // }
 
-// // --------------vector::back--------------
+// // --------------map::back--------------
 // int main () {
 //   std::vector<int> myvector;
 
@@ -244,7 +244,7 @@
 //   return 0;
 // }
 
-// // --------------vector::front--------------
+// // --------------map::front--------------
 // int main () {
 //   ft::vector<int> myvector;
 
@@ -260,8 +260,8 @@
 //   return 0;
 // }
 
-// // --------------vector::operator[]--------------
-// // --------------vector::at--------------
+// // --------------map::operator[]--------------
+// // --------------map::at--------------
 // int main () {
 //   ft::vector<int> myvector (10);   // 10 zero-initialized ints
 
@@ -282,7 +282,7 @@
 //   return 0;
 // }
 
-// // --------------vector::reserve--------------
+// // --------------map::reserve--------------
 // int main () {
 //   ft::vector<int>::size_type sz;
 
@@ -311,7 +311,7 @@
 //   return 0;
 // }
 
-// // --------------vector::empty--------------
+// // --------------map::empty--------------
 // int main () {
 //   ft::vector<int> myvector;
 //   int sum (0);
@@ -328,7 +328,7 @@
 //   return 0;
 // }
 
-// // --------------vector::resize--------------
+// // --------------map::resize--------------
 // int main () {
 //   ft::vector<int> myvector;
 
@@ -352,97 +352,81 @@
 //   return 0;
 // }
 
-// // --------------vector::max_size--------------
-// int main () {
-//   ft::vector<int> myvector;
-
-//   // set some content in the vector:
-//   for (int i = 0; i < 100; i++) myvector.push_back(i);
-
-//   std::cout << "size: " << myvector.size() << "\n";
-//   std::cout << "capacity: " << myvector.capacity() << "\n";
-//   std::cout << "max_size: " << myvector.max_size() << "\n";
-//   return 0;
-// }
-
-// // --------------vector::size--------------
-// int main () {
-//   ft::vector<int> myints;
-//   std::cout << "0. size: " << myints.size() << '\n';
-
-//   for (int i = 0; i < 10; i++) myints.push_back(i);
-//   std::cout << "1. size: " << myints.size() << '\n';
-//   std::cout << "1. capacity: " << myints.capacity() << '\n';
-
-//   myints.insert(myints.end(), 10, 100);
-//   std::cout << "2. size: " << myints.size() << '\n';
-
-//   myints.pop_back();
-//   std::cout << "3. size: " << myints.size() << '\n';
-//   std::cout << "3. capacity: " << myints.capacity() << '\n';
-//   std::cout << "myvector contains:";
-//   for (ft::vector<int>::iterator it = myints.begin(); it != myints.end(); ++it)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
-
-//   return 0;
-// }
-
-// // --------------vector::rend--------------
-// // --------------vector::rbegin--------------
-// int main () {
-//   ft::vector<int> myvector(5);  // 5 default-constructed ints
-
-//   int i = 0;
-
-//   ft::vector<int>::reverse_iterator rit = myvector.rbegin();
-//   for (; rit != myvector.rend(); ++rit)
-//     *rit = ++i;
-
-//   std::cout << "myvector contains:";
-//   for (ft::vector<int>::iterator it = myvector.begin(); it != myvector.end(); ++it)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
-
-//   return 0;
-// }
-
-// --------------map::end--------------
-// --------------map::begin--------------
+// --------------map::max_size--------------
 int main()
 {
-    ft::map<char, int> mymap;
-
-    mymap['c'] = 100;
-    mymap['a'] = 200;
-    mymap['b'] = 300;
-
-    // show content:
-    for (ft::map<char, int>::iterator it = mymap.begin(); it != mymap.end(); ++it)
-        std::cout << it->first << " => " << it->second << '\n';
-    ft::map<char, int>::iterator it = mymap.begin();
-    std::cout << it->first << " => " << it->second << '\n';
-    it++;
-    std::cout << it->first << " => " << it->second << '\n';
-    ++it;
-    std::cout << it->first << " => " << it->second << '\n';
-
-    // ft::vector<int> myvector;
-    // std::cout << "Capacity: " << myvector.capacity() << std::endl;
-    // std::cout << "Size: " << myvector.size() << std::endl;
-    // for (int i = 1; i <= 5; i++)
-    //     myvector.push_back(i);
-
-    // std::cout << "myvector contains:";
-    // for (ft::vector<int>::iterator it = myvector.begin(); it != myvector.end(); ++it)
-    //     std::cout << ' ' << *it;
-    // std::cout << '\n';
-    // std::cout << "Capacity: " << myvector.capacity() << std::endl;
-    // std::cout << "Size: " << myvector.size() << std::endl;
-
+    
     return 0;
 }
 
+// // --------------map::erase--------------  // maybe upper
+// // --------------map::empty--------------
+// // --------------map::size--------------
+// int main()
+// {
+//     ft::map<char, int> mymap;
+//     std::cout << "mymap.size() is " << mymap.size() << '\n';
+//     mymap['g'] = 101;
+//     mymap['b'] = 202;
+//     mymap['d'] = 300;
+//     mymap['c'] = 302;
+//     mymap['f'] = 202;
+//     mymap['j'] = 300;
+//     mymap['n'] = 302;
+
+//     std::cout << "mymap.size() is " << mymap.size() << '\n';
+
+//     while (!mymap.empty())
+//     {
+//         std::cout << mymap.begin()->first << " => " << mymap.begin()->second << '\n';
+//         mymap.erase(mymap.begin());
+//     }
+//     std::cout << "mymap.size() is " << mymap.size() << '\n';
+
+//     return 0;
+// }
+
+// // --------------map::rend--------------
+// // --------------map::rbegin--------------
+// int main()
+// {
+//     ft::map<char, int> mymap;
+
+//     mymap['y'] = 100;
+//     mymap['z'] = 200;
+//     mymap['x'] = 300;
+
+//     // show content:
+//     ft::map<char, int>::reverse_iterator rit;
+//     for (rit = mymap.rbegin(); rit != mymap.rend(); ++rit)
+//         std::cout << rit->first << " => " << rit->second << '\n';
+
+//     return 0;
+// }
+
+// // --------------map::end--------------
+// // --------------map::begin--------------
+// int main()
+// {
+//     ft::map<char, int> mymap;
+//     mymap['c'] = 100;
+//     mymap['a'] = 200;
+//     mymap['b'] = 300;
+
+//     // show content:
+//     for (ft::map<char, int>::iterator it = mymap.begin(); it != mymap.end(); ++it)
+//         std::cout << it->first << " => " << it->second << '\n';
+//     ft::map<char, int>::iterator it = mymap.begin();
+//     std::cout << it->first << " => " << it->second << '\t';
+//     it++;
+//     std::cout << it->first << " => " << it->second << '\t';
+//     ++it;
+//     std::cout << it->first << " => " << it->second << '\n';
+
+//     return 0;
+// }
+
+// // --------------map::size--------------
 // // --------------map::operator=--------------
 // int main()
 // {
