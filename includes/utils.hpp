@@ -894,6 +894,12 @@ public:
         return (*this);
     }
 
+    map_iterator &operator=(const map_iterator &mapIterator) const
+    {
+        this->_ptr = mapIterator._ptr;
+        return (*this);
+    }
+
     pointer getPtr() { return (_ptr); }
     void setPtr(pointer ptr) { this->_ptr = ptr; }
 
@@ -930,6 +936,11 @@ public:
     }
 
     bool operator==(const map_iterator &mapIterator)
+    {
+        return (this->_ptr == mapIterator._ptr);
+    }
+
+    bool operator==(const map_iterator &mapIterator) const
     {
         return (this->_ptr == mapIterator._ptr);
     }
@@ -1006,6 +1017,12 @@ public:
         return (*this);
     }
 
+    reverse_map_iterator &operator=(const reverse_iterator &mapIterator) const
+    {
+        this->_ptr = mapIterator._ptr;
+        return (*this);
+    }
+
     pointer getPtr() { return (_ptr); }
     void setPtr(pointer ptr) { this->_ptr = ptr; }
 
@@ -1040,6 +1057,11 @@ public:
     }
 
     bool operator==(const reverse_map_iterator &mapIterator)
+    {
+        return (this->_ptr == mapIterator._ptr);
+    }
+
+    bool operator==(const reverse_map_iterator &mapIterator) const
     {
         return (this->_ptr == mapIterator._ptr);
     }

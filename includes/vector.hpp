@@ -415,12 +415,7 @@ namespace ft
             return (last);
         }
 
-        void clear()
-        {
-            _size = 0;
-            // while (_size)
-            // 	erase(begin());
-        }
+        void clear() { _size = 0; }
 
         friend bool operator==(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
         {

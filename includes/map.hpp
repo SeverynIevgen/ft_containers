@@ -26,7 +26,7 @@ namespace ft
     }
 
     template <class Key, class T, class Compare = std::less<Key>,
-              class Alloc = std::allocator<std::pair<const Key, T> > >
+              class Alloc = std::allocator<std::pair<const Key, T>>>
     class map
     {
     public:
@@ -334,7 +334,8 @@ namespace ft
             iterator it = this->begin();
             while (it != this->end())
             {
-                if (this->_comp(it->first, k) <= 0)
+                // if (this->_comp(it->first, k) <= 0)
+                if (it->first == k)
                     break;
                 it++;
             }
@@ -346,7 +347,7 @@ namespace ft
             const_iterator it = this->begin();
             while (it != this->end())
             {
-                if (this->_comp(it->first, k) <= 0)
+                if (it->first == k)
                     break;
                 it++;
             }
@@ -359,8 +360,20 @@ namespace ft
             iterator it = this->begin();
             while (it != this->end())
             {
-                if (it->first != k && this->_comp(it->first, k) <= 0)
-                    break;
+                if (it->first == k)
+                    return (++it);
+                it++;
+            }
+            return (it);
+        }
+
+        const_iterator upper_bound(const key_type &k) const
+        {
+            const_iterator it = this->begin();
+            while (it != this->end())
+            {
+                if (it->first == k)
+                    return (++it);
                 it++;
             }
             return (it);
@@ -426,6 +439,80 @@ namespace ft
             if (this->find(k) != this->end())
                 return (1);
             return (0);
+        }
+
+        // --- Get range of equal elements ---
+        std::pair<const_iterator, const_iterator> equal_range(const key_type &k) const
+        {
+            return (std::pair<const_iterator, const_iterator>(this->lower_bound(k), this->upper_bound(k)));
+        }
+
+        std::pair<iterator, iterator> equal_range(const key_type &k)
+        {
+            return (std::pair<iterator, iterator>(this->lower_bound(k), this->upper_bound(k)));
+        }
+
+        friend bool operator==(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+        {
+            if (lhs.size() != rhs.size())
+                return (false);
+            size_t i = lhs.size();
+            const_iterator it1 = lhs.begin();
+            const_iterator it2 = rhs.begin();
+            while (i--)
+            {
+                if (*it1 != *it2)
+                    return (false);
+                else
+                {
+                    ++it1;
+                    ++it2;
+                }
+            }
+            return (true);
+        }
+
+        friend bool operator!=(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+        {
+            return (!(lhs == rhs));
+        }
+
+        friend bool operator<(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+        {
+            const_iterator it1 = lhs.begin();
+            const_iterator it1End = lhs.end();
+            const_iterator it2 = rhs.begin();
+            const_iterator it2End = rhs.end();
+            while (it1 != it1End && it2 != it2End && *it1 == *it2)
+            {
+                it1++;
+                it2++;
+            }
+            return ((it1 == it1End && it2 != it2End) || *it1 < *it2);
+        }
+
+        friend bool operator>(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+        {
+            const_iterator it1 = lhs.begin();
+            const_iterator it1End = lhs.end();
+            const_iterator it2 = rhs.begin();
+            const_iterator it2End = rhs.end();
+            while (it1 != it1End && it2 != it2End && *it1 == *it2)
+            {
+                it1++;
+                it2++;
+            }
+            return ((it2 == it2End && it1 != it1End) || *it1 > *it2);
+        }
+
+        friend bool operator<=(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+        {
+            return (!(lhs > rhs));
+        }
+
+        friend bool operator>=(const map<Key, T, Compare, Alloc> &lhs, const map<Key, T, Compare, Alloc> &rhs)
+        {
+            return (!(lhs < rhs));
         }
     };
 
