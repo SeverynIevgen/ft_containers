@@ -95,20 +95,9 @@ public:
         return (_ptr != it._ptr);
     }
 
-    reference operator*() const
-    {
-        return (*_ptr->value);
-    }
-
-    pointer operator->() const
-    {
-        return (_ptr->value);
-    }
-
-    t_list<T> *getValue() const
-    {
-        return (_ptr);
-    }
+    reference operator*() const { return (*_ptr->value); }
+    pointer operator->() const { return (_ptr->value); }
+    t_list<T> *getValue() const { return (_ptr); }
 
     // template <class InputIterator, class Distance>
     // void advance (InputIterator& it, Distance n) {
@@ -183,15 +172,8 @@ public:
         return (_ptr != it._ptr);
     }
 
-    reference operator*() const
-    {
-        return (*_ptr->value);
-    }
-
-    pointer operator->() const
-    {
-        return (_ptr->value);
-    }
+    reference operator*() const { return (*_ptr->value); }
+    pointer operator->() const { return (_ptr->value); }
 };
 
 template <class T>
@@ -252,20 +234,9 @@ public:
         return (_ptr != it._ptr);
     }
 
-    reference operator*() const
-    {
-        return (*_ptr->value);
-    }
-
-    pointer operator->() const
-    {
-        return (_ptr->value);
-    }
-
-    t_list<T> *getValue() const
-    {
-        return (_ptr);
-    }
+    reference operator*() const { return (*_ptr->value); }
+    pointer operator->() const { return (_ptr->value); }
+    t_list<T> *getValue() const { return (_ptr); }
 };
 
 template <class T>
@@ -333,15 +304,8 @@ public:
         return (_ptr != it._ptr);
     }
 
-    reference operator*() const
-    {
-        return (*_ptr->value);
-    }
-
-    pointer operator->() const
-    {
-        return (_ptr->value);
-    }
+    reference operator*() const { return (*_ptr->value); }
+    pointer operator->() const { return (_ptr->value); }
 };
 
 template <typename T>
@@ -427,15 +391,8 @@ public:
         return (_ptr >= it._ptr);
     }
 
-    reference &operator*() const
-    {
-        return (*_ptr);
-    }
-
-    pointer *operator->() const
-    {
-        return (_ptr);
-    }
+    reference &operator*() const { return (*_ptr); }
+    pointer *operator->() const { return (_ptr); }
 
     random_access_iterator operator+(std::ptrdiff_t n)
     {
@@ -576,15 +533,8 @@ public:
         return (_ptr >= it._ptr);
     }
 
-    const reference &operator*() const
-    {
-        return (*_ptr);
-    }
-
-    pointer *operator->() const
-    {
-        return (_ptr);
-    }
+    const reference &operator*() const { return (*_ptr); }
+    pointer *operator->() const { return (_ptr); }
 
     const_random_access_iterator operator+(std::ptrdiff_t n)
     {
@@ -694,15 +644,8 @@ public:
         return (_ptr != it._ptr);
     }
 
-    reference &operator*() const
-    {
-        return (*_ptr);
-    }
-
-    pointer *operator->() const
-    {
-        return (_ptr);
-    }
+    reference &operator*() const { return (*_ptr); }
+    pointer *operator->() const { return (_ptr); }
 
     reverse_random_access_iterator operator+(std::ptrdiff_t n)
     {
@@ -828,15 +771,8 @@ public:
         return (_ptr != it._ptr);
     }
 
-    reference &operator*() const
-    {
-        return (*_ptr);
-    }
-
-    pointer *operator->() const
-    {
-        return (_ptr);
-    }
+    reference &operator*() const { return (*_ptr); }
+    pointer *operator->() const { return (_ptr); }
 
     const_reverse_random_access_iterator operator+(std::ptrdiff_t n)
     {
@@ -962,7 +898,9 @@ public:
     void setPtr(pointer ptr) { this->_ptr = ptr; }
 
     cell_type &operator*() { return (_ptr->value); }
+    cell_type &operator*() const { return (_ptr->value); }
     cell_type *operator->() { return (&_ptr->value); }
+    cell_type *operator->() const { return (&_ptr->value); }
 
     map_iterator &operator++()
     {

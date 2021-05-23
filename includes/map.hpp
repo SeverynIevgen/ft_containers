@@ -26,7 +26,7 @@ namespace ft
     }
 
     template <class Key, class T, class Compare = std::less<Key>,
-              class Alloc = std::allocator<std::pair<const Key, T>>>
+              class Alloc = std::allocator<std::pair<const Key, T> > >
     class map
     {
     public:
@@ -46,22 +46,23 @@ namespace ft
         typedef reverse_map_iterator<Key, T, const T *, const T &> const_reverse_iterator;
         typedef std::ptrdiff_t difference_type;
         typedef std::size_t size_type;
-        // class value_compare : public std::binary_function<value_type, value_type, bool>
-        // {
-        //     friend class map;
+        class value_compare : public std::binary_function<value_type, value_type, bool>
+        {
+            friend class map;
 
-        // protected:
-        //     Compare comp;
-        //     value_compare(Compare c) : comp(c) {}
-        // public:
-        //     typedef bool result_type;
-        //     typedef value_type first_argument_type;
-        //     typedef value_type second_argument_type;
-        //     bool operator()(const value_type &x, const value_type &y) const
-        //     {
-        //         return comp(x.first, y.first);
-        //     }
-        // };
+        protected:
+            Compare comp;
+            value_compare(Compare c) : comp(c) {} // constructed with map's comparison object
+
+        public:
+            typedef bool result_type;
+            typedef value_type first_argument_type;
+            typedef value_type second_argument_type;
+            bool operator()(const value_type &x, const value_type &y) const
+            {
+                return comp(x.first, y.first);
+            }
+        };
 
     private:
         cell _root;
@@ -81,12 +82,7 @@ namespace ft
         }
 
         // Simple initialization by creation empty cell
-        void _map_init()
-        {
-            _root = _new_cell(key_type(), mapped_type(), nullptr, true);
-            // _root->right = _new_cell(key_type(), mapped_type(), _root, true);
-            _size = 0;
-        }
+        void _map_init() { _root = _new_cell(key_type(), mapped_type(), nullptr, true); }
 
         // cell _insert_cell(cell i, key_type key, mapped_type val, bool empty = false)
         cell _insert_cell(cell i, key_type key, mapped_type val)
@@ -99,12 +95,10 @@ namespace ft
                 free(i);
                 return (_root);
             }
-            // if (key < i->value.first && !empty)
             if (key < i->value.first)
             {
                 if (!i->left)
                 {
-                    // i->left = _new_cell(key, val, i, empty);
                     i->left = _new_cell(key, val, i);
                     return (i->left);
                 }
@@ -112,11 +106,9 @@ namespace ft
             }
             else if (!i->right)
             {
-                // i->left = _new_cell(key, val, i, empty);
                 i->right = _new_cell(key, val, i);
                 return (i->right);
             }
-            // std::cout << "Here now3...\n";
             return (_insert_cell(i->right, key, val));
         }
 
@@ -137,7 +129,11 @@ namespace ft
             if (!del->parent)
             {
                 if (!del->left && !del->right)
-                    this->_root = nullptr;
+                {
+                    delete (del);
+                    this->_map_init();
+                    return;
+                }
                 else if (!del->left)
                     this->_root = del->right;
                 else if (!del->right)
@@ -151,8 +147,7 @@ namespace ft
                     _delete_cell(for_del);
                     return;
                 }
-                if (this->_root)
-                    this->_root->parent = nullptr;
+                this->_root->parent = nullptr;
                 delete (del);
                 return;
             }
@@ -169,30 +164,20 @@ namespace ft
             if (del->left && !del->right)
             {
                 if (del == parent->left)
-                {
                     parent->left = del->left;
-                    del->left->parent = parent;
-                }
                 else
-                {
                     parent->right = del->right;
-                    del->right->parent = parent;
-                }
+                del->left->parent = parent;
                 delete (del);
                 return;
             }
             if (!del->left && del->right)
             {
                 if (del == parent->left)
-                {
                     parent->left = del->right;
-                    del->right->parent = parent;
-                }
                 else
-                {
-                    parent->right = del->left;
-                    del->left->parent = parent;
-                }
+                    parent->right = del->right;
+                del->right->parent = parent;
                 delete (del);
                 return;
             }
@@ -203,7 +188,17 @@ namespace ft
         explicit map(const key_compare &comp = key_compare(),
                      const allocator_type &alloc = allocator_type()) : _size(0), _comp(comp), _alloc(alloc)
         {
-            _map_init();
+            this->_map_init();
+        }
+
+        //  --- range constructor ---
+        template <class InputIterator>
+        map(InputIterator first, InputIterator last,
+            const key_compare &comp = key_compare(),
+            const allocator_type &alloc = allocator_type()) : _size(0), _comp(comp), _alloc(alloc)
+        {
+            this->_map_init();
+            this->insert(first, last);
         }
 
         //	Insert elements
@@ -221,9 +216,18 @@ namespace ft
         {
             iterator tmp = this->find(val.first);
             if (tmp != this->end())
-                return (std::make_pair(tmp, false));
+                return (tmp);
             this->_size++;
             return (iterator(this->_insert_cell(pos.getPtr(), val.first, val.second)));
+        }
+
+        void insert(iterator first, iterator last)
+        {
+            while (first != last)
+            {
+                this->insert(*first);
+                last++;
+            }
         }
 
         iterator find(const key_type &key)
@@ -231,6 +235,14 @@ namespace ft
             cell tmp; //todo --> maybe empty at first
             if ((tmp = this->_find(this->_root, key)))
                 return (iterator(tmp));
+            return (this->end());
+        }
+
+        const_iterator find(const key_type &key) const
+        {
+            cell tmp; //todo --> maybe empty at first
+            if ((tmp = this->_find(this->_root, key)))
+                return (const_iterator(tmp));
             return (this->end());
         }
 
@@ -316,20 +328,113 @@ namespace ft
             return (const_reverse_iterator(tmp->left));
         }
 
+        // --- Return iterator to lower bound ---
+        iterator lower_bound(const key_type &k)
+        {
+            iterator it = this->begin();
+            while (it != this->end())
+            {
+                if (this->_comp(it->first, k) <= 0)
+                    break;
+                it++;
+            }
+            return (it);
+        }
+
+        const_iterator lower_bound(const key_type &k) const
+        {
+            const_iterator it = this->begin();
+            while (it != this->end())
+            {
+                if (this->_comp(it->first, k) <= 0)
+                    break;
+                it++;
+            }
+            return (it);
+        }
+
+        // --- Return iterator to upper bound ---
+        iterator upper_bound(const key_type &k)
+        {
+            iterator it = this->begin();
+            while (it != this->end())
+            {
+                if (it->first != k && this->_comp(it->first, k) <= 0)
+                    break;
+                it++;
+            }
+            return (it);
+        }
+
         // ---Return container size---
         size_type size() const { return (_size); }
+
+        // ---Return maximum size---
+        size_type max_size() const
+        {
+            return (std::numeric_limits<size_type>::max() / sizeof(map_cell<Key, T>));
+        }
 
         // ---Test whether container is empty---
         bool empty() const { return (_size == 0); }
 
         //	Erase elements
-        // -single element (position)-
+        // ---single element by iterator (position)---
         void erase(iterator position)
         {
             this->_delete_cell(position.getPtr());
             this->_size--;
         }
+
+        // ---single element by key---
+        size_type erase(const key_type &key)
+        {
+            iterator temp = this->find(key);
+            if (temp == this->end())
+                return (0);
+            this->erase(temp);
+            return (1);
+        }
+
+        // ---elements by range---
+        void erase(iterator first, iterator last)
+        {
+            while (first != last)
+                this->erase(first++);
+        }
+
+        // --- Swap content ---
+        void swap(map &x)
+        {
+            map<Key, T, Compare, Alloc> temp = *this;
+            *this = x;
+            x = temp;
+        }
+
+        // --- Clear content ---
+        void clear() { this->erase(this->begin(), this->end()); }
+
+        // --- Return key comparison object ---
+        key_compare key_comp() const { return (_comp); }
+
+        // --- Return value comparison object ---
+        value_compare value_comp() const { return (_comp); }
+
+        // --- Return value comparison object ---
+        size_type count(const key_type &k) const
+        {
+            if (this->find(k) != this->end())
+                return (1);
+            return (0);
+        }
     };
+
+    // Exchanges the contents of two maps
+    template <class Key, class T, class Compare, class Alloc>
+    void swap(map<Key, T, Compare, Alloc> &x, map<Key, T, Compare, Alloc> &y)
+    {
+        x.swap(y);
+    }
 }
 
 #endif
