@@ -1,7 +1,5 @@
-#include "list.hpp"
-// #include "vector.hpp"
-// #include "map.hpp"
-#include "queue.hpp"
+#include "includes/list.hpp"
+#include "includes/queue.hpp"
 
 #include <cmath>
 #include <iostream> // std::cout
@@ -64,19 +62,19 @@
 //     return 0;
 // }
 
-// // --------------queue::queue--------------
-// int main()
-// {
-//     std::list<int> mylist(2, 200);  // list with 2 elements
+// --------------queue::queue--------------
+int main()
+{
+    std::list<int> mylist(2, 200);  // list with 2 elements
 
-//     std::queue<int> first;          // empty queue
+    std::queue<int> first;          // empty queue
 
-//     std::queue<int, std::list<int> > second; // empty queue with list as underlying container
-//     std::queue<int, std::list<int> > third(mylist);
+    std::queue<int, std::list<int> > second; // empty queue with list as underlying container
+    std::queue<int, std::list<int> > third(mylist);
 
-//     std::cout << "size of first: " << first.size() << '\n';
-//     std::cout << "size of third: " << second.size() << '\n';
-//     std::cout << "size of fourth: " << third.size() << '\n';
+    std::cout << "size of first: " << first.size() << '\n';
+    std::cout << "size of third: " << second.size() << '\n';
+    std::cout << "size of fourth: " << third.size() << '\n';
 
-//     return 0;
-// }
+    return 0;
+}

@@ -1,5 +1,5 @@
 // #include "list.hpp"
-#include "vector.hpp"
+#include "includes/vector.hpp"
 // #include <list>
 // #include <iostream>
 #include <vector>
@@ -442,54 +442,55 @@
 //   return 0;
 // }
 
-// // --------------vector::capacity--------------
-// // --------------vector::vector--------------
-// int main () {
-//   // constructors used in the same order as described above:
-//   ft::vector<int> first;                                // empty list of ints
-//   ft::vector<int> second(5, 100);                       // four ints with value 100
-//   ft::vector<int> third(second.begin(), second.end());  // iterating through second
-//   ft::vector<int> fourth(third);                        // a copy of third
+// --------------vector::capacity--------------
+// --------------vector::vector--------------
+int main()
+{
+    // constructors used in the same order as described above:
+    ft::vector<int> first;                               // empty list of ints
+    ft::vector<int> second(5, 100);                      // four ints with value 100
+    ft::vector<int> third(second.begin(), second.end()); // iterating through second
+    ft::vector<int> fourth(third);                       // a copy of third
 
-//   // the iterator constructor can also be used to construct from arrays:
-//   int myints[] = {16, 2, 77, 29};
-//   ft::vector<int> fifth(myints, myints + sizeof(myints) / sizeof(int));
+    // the iterator constructor can also be used to construct from arrays:
+    int myints[] = {16, 2, 77, 29};
+    ft::vector<int> fifth(myints, myints + sizeof(myints) / sizeof(int));
 
-//   std::cout << "The contents of the first are: ";
-//   for (ft::vector<int>::iterator it = first.begin(); it != first.end(); it++)
-//     std::cout << *it << ' ';
-//   std::cout << '\n';
+    std::cout << "The contents of the first are: ";
+    for (ft::vector<int>::iterator it = first.begin(); it != first.end(); it++)
+        std::cout << *it << ' ';
+    std::cout << '\n';
 
-//   std::cout << "The contents of the second are: ";
-//   for (ft::vector<int>::iterator it = second.begin(); it != second.end(); it++)
-//     std::cout << *it << ' ';
-//   std::cout << '\n';
+    std::cout << "The contents of the second are: ";
+    for (ft::vector<int>::iterator it = second.begin(); it != second.end(); it++)
+        std::cout << *it << ' ';
+    std::cout << '\n';
 
-//   std::cout << "The contents of the third are:  ";
-//   for (ft::vector<int>::iterator it = third.begin(); it != third.end(); it++)
-//     std::cout << *it << ' ';
-//   std::cout << '\n';
+    std::cout << "The contents of the third are:  ";
+    for (ft::vector<int>::iterator it = third.begin(); it != third.end(); it++)
+        std::cout << *it << ' ';
+    std::cout << '\n';
 
-//   std::cout << "The contents of the fourth are: ";
-//   for (ft::vector<int>::iterator it = fourth.begin(); it != fourth.end(); it++)
-//     std::cout << *it << ' ';
-//   std::cout << '\n';
+    std::cout << "The contents of the fourth are: ";
+    for (ft::vector<int>::iterator it = fourth.begin(); it != fourth.end(); it++)
+        std::cout << *it << ' ';
+    std::cout << '\n';
 
-//   std::cout << "The contents of the fifth are:  ";
-//   for (ft::vector<int>::iterator it = fifth.begin(); it != fifth.end(); it++)
-//     std::cout << *it << ' ';
-//   std::cout << '\n';
+    std::cout << "The contents of the fifth are:  ";
+    for (ft::vector<int>::iterator it = fifth.begin(); it != fifth.end(); it++)
+        std::cout << *it << ' ';
+    std::cout << '\n';
 
-//   std::cout << "Capacity: " << first.capacity() << std::endl;
-// 	std::cout << "Size: " << first.size() << std::endl;
-//   std::cout << "Capacity: " << second.capacity() << std::endl;
-// 	std::cout << "Size: " << second.size() << std::endl;
-//   std::cout << "Capacity: " << third.capacity() << std::endl;
-// 	std::cout << "Size: " << third.size() << std::endl;
-//   std::cout << "Capacity: " << fourth.capacity() << std::endl;
-// 	std::cout << "Size: " << fourth.size() << std::endl;
-//   std::cout << "Capacity: " << fifth.capacity() << std::endl;
-// 	std::cout << "Size: " << fifth.size() << std::endl;
+    std::cout << "Capacity: " << first.capacity() << std::endl;
+    std::cout << "Size: " << first.size() << std::endl;
+    std::cout << "Capacity: " << second.capacity() << std::endl;
+    std::cout << "Size: " << second.size() << std::endl;
+    std::cout << "Capacity: " << third.capacity() << std::endl;
+    std::cout << "Size: " << third.size() << std::endl;
+    std::cout << "Capacity: " << fourth.capacity() << std::endl;
+    std::cout << "Size: " << fourth.size() << std::endl;
+    std::cout << "Capacity: " << fifth.capacity() << std::endl;
+    std::cout << "Size: " << fifth.size() << std::endl;
 
-//   return 0;
-// }
+    return 0;
+}

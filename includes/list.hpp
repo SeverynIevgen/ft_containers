@@ -186,7 +186,7 @@ namespace ft
 
         size_type max_size() const
         {
-            return (std::numeric_limits<size_type>::max() / sizeof(t_list<T>));
+            return (std::numeric_limits<size_type>::max() / sizeof(t_list<T>)); // TODO check
         }
 
         reference front()
@@ -242,29 +242,48 @@ namespace ft
         iterator erase(iterator elem)
         {
             t_list<T> *tmp = elem.getValue();
-            if (tmp == _end)
-                return (end());
             tmp->next->prev = tmp->prev;
             tmp->prev->next = tmp->next;
-            if (tmp->prev == _end)
-                _front = tmp->next;
-            if (tmp->next == _end)
-                _back = tmp->prev;
             delete tmp;
-            _size--;
+            this->_size--;
+            std::cout << "Here\n";
             return (++elem);
+            
+            
+            // t_list<T> *tmp = elem.getValue();
+            // if (tmp == _end)
+            //     return (iterator(this->_end));
+            // tmp->next->prev = tmp->prev;
+            // tmp->prev->next = tmp->next;
+            // if (tmp->prev == _end)
+            //     _front = tmp->next;
+            // if (tmp->next == _end)
+            //     _back = tmp->prev;
+            // delete tmp;
+            // _size--;
+            // return (++elem);
         }
 
         // -range of elements ([first,last))-
         iterator erase(iterator first, iterator last)
         {
-            if (first == last)
-                return last;
             while (first != last)
-                first = erase(first);
-            if (last.getValue() == _end)
-                return (end());
-            return (last);
+                first = this->erase(first);
+            return (first);
+            // std::cout << "Here\n";
+            // std::cout << "first: " << first.getValue() << "\n";
+            // std::cout << "last: " << last.getValue() << "\n";
+            // if (first == last)
+            //     return last;
+            // while (first != last)
+            // {
+            //     std::cout << "here\n";
+            //     first = this->erase(first);
+            // }
+            // std::cout << "Here2\n";
+            // if (last.getValue() == _end)
+            //     return (end());
+            // return (last);
         }
 
         // Add element at the end
@@ -280,7 +299,7 @@ namespace ft
         }
 
         // Delete last element
-        void pop_front()
+        void pop_back()
         {
             t_list<T> *temp;
             temp = _back->prev;
@@ -302,11 +321,11 @@ namespace ft
         }
 
         // Delete first element
-        void pop_back()
+        void pop_front()
         {
             if (_size == 1)
             {
-                pop_front();
+                pop_back();
                 return;
             }
             t_list<T> *temp;

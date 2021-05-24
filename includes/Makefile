@@ -19,8 +19,8 @@ HEADER = utils.hpp list.hpp
 OBJS = $(SRCS:.cpp=.o)
 
 CC = clang++
-FLAGS = -Wall -Wextra -Werror -std=c++98
-# FLAGS = -Wall -Wextra -Werror -std=c++11
+# FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++11
 RM = rm -f
 RMR = rm -rf
 

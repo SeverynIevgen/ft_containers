@@ -1,7 +1,6 @@
 // #include "list.hpp"
-#include "vector.hpp"
-// #include "map.hpp"
-#include "stack.hpp"
+#include "includes/vector.hpp"
+#include "includes/stack.hpp"
 
 #include <cmath>
 #include <iostream> // std::cout
@@ -62,22 +61,22 @@
 //     return 0;
 // }
 
-// // --------------stack::stack--------------
-// int main()
-// {
-//     std::deque<int> mydeque(3, 100);   // deque with 3 elements
-//     std::vector<int> myvector(2, 200); // vector with 2 elements
+// --------------stack::stack--------------
+int main()
+{
+    std::deque<int> mydeque(3, 100);   // deque with 3 elements
+    std::vector<int> myvector(2, 200); // vector with 2 elements
 
-//     std::stack<int> first;           // empty stack
-//     std::stack<int> second(mydeque); // stack initialized to copy of deque
+    std::stack<int> first;           // empty stack
+    std::stack<int> second(mydeque); // stack initialized to copy of deque
 
-//     ft::stack<int, std::vector<int> > third; // empty stack using vector
-//     ft::stack<int, std::vector<int> > fourth(myvector);
+    ft::stack<int, std::vector<int>> third; // empty stack using vector
+    ft::stack<int, std::vector<int>> fourth(myvector);
 
-//     std::cout << "size of first: " << first.size() << '\n';
-//     std::cout << "size of second: " << second.size() << '\n';
-//     std::cout << "size of third: " << third.size() << '\n';
-//     std::cout << "size of fourth: " << fourth.size() << '\n';
+    std::cout << "size of first: " << first.size() << '\n';
+    std::cout << "size of second: " << second.size() << '\n';
+    std::cout << "size of third: " << third.size() << '\n';
+    std::cout << "size of fourth: " << fourth.size() << '\n';
 
-//     return 0;
-// }
+    return 0;
+}
