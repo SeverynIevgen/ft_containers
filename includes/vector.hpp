@@ -277,7 +277,9 @@ namespace ft
         // Delete last element
         void pop_back()
         {
-            erase(end());
+            iterator tmp = this->end();
+            tmp--;
+            erase(tmp);
         }
 
         //	Insert elements
@@ -377,14 +379,16 @@ namespace ft
             iterator it = elem;
             iterator tmp;
             if (_size == 0)
+            {
+                _size--;
                 return (end());
+            }
             while (it != end())
             {
                 tmp = it;
                 ++it;
                 *tmp = *it;
             }
-            *tmp = 0;
             _size--;
             return (elem);
         }
@@ -404,11 +408,9 @@ namespace ft
                 i++;
             }
             i = 0;
-            std::cout << 'n = ' << n << std::endl;
             while (i < n)
             {
                 _node[_size - 1 - i] = 0;
-                std::cout << 'i = ' << _size - 1 - i << std::endl;
                 i++;
             }
             _size -= n;

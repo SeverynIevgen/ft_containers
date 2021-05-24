@@ -103,7 +103,7 @@
 
 //   it = myvector.begin();
 //   it = myvector.insert(it, 200);
-  
+
 //   std::cout << "1. myvector contains:";
 //   for (it2 = myvector.begin(); it2 < myvector.end(); it2++)
 //     std::cout << ' ' << *it2;
@@ -135,31 +135,37 @@
 // }
 
 // // --------------vector::pop_back--------------
-// int main () {
-//   std::vector<int> myvector;
-//   int sum = 0;
-//   myvector.push_back(100);
-//   myvector.push_back(200);
-//   myvector.push_back(300);
-//   myvector.push_back(5);
-//   myvector.pop_back();
-//   myvector.push_back(55);
-
-//   while (!myvector.empty()) {
-//     sum += myvector.back();
-//     std::cout << myvector.back() << "--";
+// int main()
+// {
+//     ft::vector<int> myvector;
+//     int sum = 0;
+//     myvector.push_back(100);
+//     myvector.push_back(200);
+//     myvector.push_back(300);
+//     myvector.push_back(5);
 //     myvector.pop_back();
-//   }
-//   myvector.pop_back();
-//   myvector.push_back(1000);
+//       myvector.push_back(55);
 
-//   std::cout << "\nThe elements of myvector summed " << sum << "\nmyvector = { ";
-//     for (std::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++) {
+//     while (!myvector.empty())
+//     {
+//         sum += myvector.back();
+//         std::cout << myvector.back() << "--";
+//         myvector.pop_back();
+//     }
+//     std::cout << "\nSize of empty mylist: " << myvector.size() << std::endl;
+//     myvector.pop_back();
+//     std::cout << "Size of error mylist: " << myvector.size() << std::endl;
+//     myvector.push_back(1000);
+//     myvector.push_back(2000);
+
+//     std::cout << "\nThe elements of myvector summed " << sum << "\nmyvector = { ";
+//     for (ft::vector<int>::iterator it = myvector.begin(); it != myvector.end(); it++)
+//     {
 //         std::cout << *it << " ";
 //     }
 //     std::cout << "};\n";
 //     std::cout << "Size of mylist: " << myvector.size() << std::endl;
-//   return 0;
+//     return 0;
 // }
 
 // // --------------vector::clear--------------
@@ -276,7 +282,7 @@
 //   for (unsigned i = 0; i < myvector.size(); i++)
 //     std::cout << ' ' << myvector.at(i);
 //   std::cout << '\n';
-  
+
 //   return 0;
 // }
 

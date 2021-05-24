@@ -12,9 +12,9 @@
 
 NAME = test
 
-SRCS = main.cpp
+SRCS = mainQueue.cpp
 
-HEADER = utils.hpp map.hpp
+HEADER = utils.hpp list.hpp
 
 OBJS = $(SRCS:.cpp=.o)
 

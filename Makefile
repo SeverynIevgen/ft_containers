@@ -14,9 +14,11 @@ NAME = test
 
 SRCS = main.cpp
 
-HEADER = utils.hpp list.hpp
+HEADER = utils.hpp list.hpp vector.hpp map.hpp stack.hpp queue.hpp
 
 OBJS = $(SRCS:.cpp=.o)
+# LIST = $(mainList.cpp:.o)
+LIST = mainList.)
 
 CC = clang++
 FLAGS = -Wall -Wextra -Werror -std=c++98
@@ -28,9 +30,14 @@ all: $(NAME)
 %.o: %.cpp $(HEADER)
 	$(CC) $(FLAGS) -c $< -o $@
 
-$(NAME): $(OBJS)
+# $(NAME): $(OBJS)
+# 	@echo "\n\033[0;33mCompiling $(NAME)..."
+# 	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+# 	@echo "\033[0m"
+
+list: $(LIST)
 	@echo "\n\033[0;33mCompiling $(NAME)..."
-	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(FLAGS) $(LIST) -o $(NAME)
 	@echo "\033[0m"
 
 clean:

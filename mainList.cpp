@@ -207,7 +207,7 @@
 //   mylist1.splice(it, mylist2); // mylist1: 1 10 20 30 2 3 4
 //                                 // mylist2 (empty)
 //                                 // "it" still points to 2 (the 5th element)
-                                          
+
 //   mylist2.splice(mylist2.begin(), mylist1, it);
 //                                 // mylist1: 1 10 20 30 3 4
 //                                 // mylist2: 2
@@ -398,33 +398,34 @@
 //   return 0;
 // }
 
-// // --------------list::pop_back--------------
-// int main () {
-//   ft::list<int> mylist;
-//   int sum = 0;
-//   mylist.push_back(100);
-//   mylist.push_back(200);
-//   mylist.push_back(300);
-//   mylist.push_back(5);
-//   mylist.pop_back();
-//   mylist.push_back(55);
+// --------------list::pop_back--------------
+int main()
+{
+  ft::list<int> mylist;
+  int sum = 0;
+  mylist.push_back(100);
+  mylist.push_back(200);
+  mylist.push_back(300);
+  mylist.push_back(5);
+  mylist.pop_back();
+  mylist.push_back(55);
 
-//   while (!mylist.empty()) {
-//     sum += mylist.back();
-//     std::cout << mylist.back() << "--";
-//     mylist.pop_back();
-//   }
-//   mylist.pop_back();
-//   mylist.push_back(1000);
+  while (!mylist.empty())
+  {
+    sum += mylist.back();
+    std::cout << mylist.back() << "--";
+    mylist.pop_back();
+  }
 
-//   std::cout << "\nThe elements of mylist summed " << sum << "\nmylist = { ";
-//     for (ft::list<int>::iterator it = mylist.begin(); it != mylist.end(); it++) {
-//         std::cout << *it << " ";
-//     }
-//     std::cout << "};\n";
-//     std::cout << "Size of mylist: " << mylist.size() << std::endl;
-//   return 0;
-// }
+  std::cout << "\nThe elements of mylist summed " << sum << "\nmylist = { ";
+  for (ft::list<int>::iterator it = mylist.begin(); it != mylist.end(); it++)
+  {
+    std::cout << *it << " ";
+  }
+  std::cout << "};\n";
+  std::cout << "Size of mylist: " << mylist.size() << std::endl;
+  return 0;
+}
 
 // // --------------list::clear--------------
 // // --------------list::push_back--------------
@@ -540,7 +541,7 @@
 //   }
 
 //   std::cout << "total: " << sum << '\n';
-  
+
 //   return 0;
 // }
 
@@ -587,42 +588,43 @@
 //   return 0;
 // }
 
-// --------------list::list--------------
-int main () {
-  // constructors used in the same order as described above:
-  ft::list<int> first;                                // empty list of ints
-  ft::list<int> second(4, 100);                       // four ints with value 100
-  ft::list<int> third(second.begin(), second.end());  // iterating through second
-  ft::list<int> fourth(third);                        // a copy of third
+// // --------------list::list--------------
+// int main()
+// {
+//   // constructors used in the same order as described above:
+//   ft::list<int> first;                               // empty list of ints
+//   ft::list<int> second(4, 100);                      // four ints with value 100
+//   ft::list<int> third(second.begin(), second.end()); // iterating through second
+//   ft::list<int> fourth(third);                       // a copy of third
 
-  // the iterator constructor can also be used to construct from arrays:
-  int myints[] = {16, 2, 77, 29};
-  ft::list<int> fifth(myints, myints + sizeof(myints) / sizeof(int));
+//   // the iterator constructor can also be used to construct from arrays:
+//   int myints[] = {16, 2, 77, 29};
+//   ft::list<int> fifth(myints, myints + sizeof(myints) / sizeof(int));
 
-  std::cout << "The contents of the first are: ";
-  for (ft::list<int>::iterator it = first.begin(); it != first.end(); it++)
-    std::cout << *it << ' ';
-  std::cout << '\n';
+//   std::cout << "The contents of the first are: ";
+//   for (ft::list<int>::iterator it = first.begin(); it != first.end(); it++)
+//     std::cout << *it << ' ';
+//   std::cout << '\n';
 
-  std::cout << "The contents of the second are: ";
-  for (ft::list<int>::iterator it = second.begin(); it != second.end(); it++)
-    std::cout << *it << ' ';
-  std::cout << '\n';
+//   std::cout << "The contents of the second are: ";
+//   for (ft::list<int>::iterator it = second.begin(); it != second.end(); it++)
+//     std::cout << *it << ' ';
+//   std::cout << '\n';
 
-  std::cout << "The contents of the third are: ";
-  for (ft::list<int>::iterator it = third.begin(); it != third.end(); it++)
-    std::cout << *it << ' ';
-  std::cout << '\n';
+//   std::cout << "The contents of the third are: ";
+//   for (ft::list<int>::iterator it = third.begin(); it != third.end(); it++)
+//     std::cout << *it << ' ';
+//   std::cout << '\n';
 
-  std::cout << "The contents of the fourth are: ";
-  for (ft::list<int>::iterator it = fourth.begin(); it != fourth.end(); it++)
-    std::cout << *it << ' ';
-  std::cout << '\n';
+//   std::cout << "The contents of the fourth are: ";
+//   for (ft::list<int>::iterator it = fourth.begin(); it != fourth.end(); it++)
+//     std::cout << *it << ' ';
+//   std::cout << '\n';
 
-  std::cout << "The contents of the fifth are: ";
-  for (ft::list<int>::iterator it = fifth.begin(); it != fifth.end(); it++)
-    std::cout << *it << ' ';
-  std::cout << '\n';
+//   std::cout << "The contents of the fifth are: ";
+//   for (ft::list<int>::iterator it = fifth.begin(); it != fifth.end(); it++)
+//     std::cout << *it << ' ';
+//   std::cout << '\n';
 
-  return 0;
-}
+//   return 0;
+// }

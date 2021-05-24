@@ -26,7 +26,7 @@ namespace ft
     }
 
     template <class Key, class T, class Compare = std::less<Key>,
-              class Alloc = std::allocator<std::pair<const Key, T>>>
+              class Alloc = std::allocator<std::pair<const Key, T> > >
     class map
     {
     public:
@@ -232,7 +232,7 @@ namespace ft
 
         iterator find(const key_type &key)
         {
-            cell tmp; //todo --> maybe empty at first
+            cell tmp;
             if ((tmp = this->_find(this->_root, key)))
                 return (iterator(tmp));
             return (this->end());
@@ -240,7 +240,7 @@ namespace ft
 
         const_iterator find(const key_type &key) const
         {
-            cell tmp; //todo --> maybe empty at first
+            cell tmp;
             if ((tmp = this->_find(this->_root, key)))
                 return (const_iterator(tmp));
             return (this->end());
