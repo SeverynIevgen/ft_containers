@@ -233,8 +233,8 @@ namespace ft
 
         void clear()
         {
-            while (_size)
-                erase(begin());
+            while (this->_size)
+                pop_back();
         }
 
         //	Erase elements
@@ -244,24 +244,12 @@ namespace ft
             t_list<T> *tmp = elem.getValue();
             tmp->next->prev = tmp->prev;
             tmp->prev->next = tmp->next;
-            delete tmp;
+            if (tmp->next == this->_end)
+                this->_back = tmp->prev;
+            if (tmp->prev == this->_end)
+                this->_front = tmp->next;
             this->_size--;
-            std::cout << "Here\n";
             return (++elem);
-            
-            
-            // t_list<T> *tmp = elem.getValue();
-            // if (tmp == _end)
-            //     return (iterator(this->_end));
-            // tmp->next->prev = tmp->prev;
-            // tmp->prev->next = tmp->next;
-            // if (tmp->prev == _end)
-            //     _front = tmp->next;
-            // if (tmp->next == _end)
-            //     _back = tmp->prev;
-            // delete tmp;
-            // _size--;
-            // return (++elem);
         }
 
         // -range of elements ([first,last))-
@@ -270,20 +258,6 @@ namespace ft
             while (first != last)
                 first = this->erase(first);
             return (first);
-            // std::cout << "Here\n";
-            // std::cout << "first: " << first.getValue() << "\n";
-            // std::cout << "last: " << last.getValue() << "\n";
-            // if (first == last)
-            //     return last;
-            // while (first != last)
-            // {
-            //     std::cout << "here\n";
-            //     first = this->erase(first);
-            // }
-            // std::cout << "Here2\n";
-            // if (last.getValue() == _end)
-            //     return (end());
-            // return (last);
         }
 
         // Add element at the end
@@ -379,10 +353,9 @@ namespace ft
         // Swap content
         void swap(list &x)
         {
-            list<T> tmp;
-            tmp = x;
-            x = *this;
-            *this = tmp;
+            list<T> tmp = *this;
+            *this = x;
+            x = tmp;
         }
 
         // Change size
@@ -497,19 +470,13 @@ namespace ft
         // -with no parameters-
         void unique()
         {
-            iterator it = begin();
+            iterator it = ++begin();
             while (it != end())
             {
-                iterator tmp = it;
-                ++tmp;
-                while (tmp != end())
-                {
-                    if (*it == *tmp)
-                        tmp = erase(tmp);
-                    else
-                        ++tmp;
-                }
-                ++it;
+                if (*it == *it.getValue()->prev->value)
+                    it = this->erase(it);
+                else
+                    ++it;
             }
         }
 
@@ -517,19 +484,13 @@ namespace ft
         template <class BinaryPredicate>
         void unique(BinaryPredicate binary_pred)
         {
-            iterator it = begin();
+            iterator it = ++begin();
             while (it != end())
             {
-                iterator tmp = it;
-                ++tmp;
-                while (tmp != end())
-                {
-                    if (binary_pred(*it, *tmp))
-                        tmp = erase(tmp);
-                    else
-                        ++tmp;
-                }
-                ++it;
+                if (binary_pred(*it, *it.getValue()->prev->value))
+                    it = this->erase(it);
+                else
+                    ++it;
             }
         }
 

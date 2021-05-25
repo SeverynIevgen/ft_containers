@@ -221,12 +221,13 @@ namespace ft
             return (iterator(this->_insert_cell(pos.getPtr(), val.first, val.second)));
         }
 
-        void insert(iterator first, iterator last)
+        template <class InputIterator>
+        void insert(InputIterator first, InputIterator last)
         {
             while (first != last)
             {
                 this->insert(*first);
-                last++;
+                first++;
             }
         }
 

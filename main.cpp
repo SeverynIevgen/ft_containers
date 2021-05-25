@@ -835,326 +835,366 @@
 // }
 
 // // --------------vector::empty--------------
-// int main () {
-//   ft::vector<int> myvector;
-//   int sum (0);
+// int main()
+// {
+// 	ft::vector<int> myvector;
+// 	int sum(0);
 
-//   for (int i = 1;i <= 10; i++) myvector.push_back(i);
+// 	for (int i = 1; i <= 10; i++)
+// 		myvector.push_back(i);
 
-//   while (!myvector.empty()) {
-//      sum += myvector.back();
-//      myvector.pop_back();
-//   }
+// 	while (!myvector.empty())
+// 	{
+// 		sum += myvector.back();
+// 		myvector.pop_back();
+// 	}
 
-//   std::cout << "total: " << sum << '\n';
+// 	std::cout << "total: " << sum << '\n';
 
-//   return 0;
+// 	return 0;
 // }
 
 // // --------------vector::resize--------------
-// int main () {
-//   ft::vector<int> myvector;
+// int main()
+// {
+// 	ft::vector<int> myvector;
 
-//   // set some initial content:
-//   for (int i = 1; i < 10; i++) myvector.push_back(i);
+// 	// set some initial content:
+// 	for (int i = 1; i < 10; i++)
+// 		myvector.push_back(i);
 
-//   std::cout << "1. size: " << myvector.size() << '\n';
-//   myvector.resize(5);
-//   std::cout << "2. size: " << myvector.size() << '\n';
-//   myvector.resize(8, 100);
-//   std::cout << "3. size: " << myvector.size() << '\n';
-//   myvector.resize(12);
-//   std::cout << "4. size: " << myvector.size() << '\n';
-//   std::cout << "4. capacity: " << myvector.capacity() << '\n';
+// 	std::cout << "1. size: " << myvector.size() << '\n';
+// 	myvector.resize(5);
+// 	std::cout << "2. size: " << myvector.size() << '\n';
+// 	myvector.resize(8, 100);
+// 	std::cout << "3. size: " << myvector.size() << '\n';
+// 	myvector.resize(12);
+// 	std::cout << "4. size: " << myvector.size() << '\n';
+// 	std::cout << "4. capacity: " << myvector.capacity() << '\n';
 
-//   std::cout << "myvector contains:";
-//   for (size_t i = 0; i < myvector.size(); i++)
-//     std::cout << ' ' << myvector[i];
-//   std::cout << '\n';
+// 	std::cout << "myvector contains:";
+// 	for (size_t i = 0; i < myvector.size(); i++)
+// 		std::cout << ' ' << myvector[i];
+// 	std::cout << '\n';
 
-//   return 0;
+// 	return 0;
 // }
 
 // // --------------vector::max_size--------------
-// int main () {
-//   ft::vector<int> myvector;
+// int main()
+// {
+// 	ft::vector<int> myvector;
 
-//   // set some content in the vector:
-//   for (int i = 0; i < 100; i++) myvector.push_back(i);
+// 	// set some content in the vector:
+// 	for (int i = 0; i < 100; i++)
+// 		myvector.push_back(i);
 
-//   std::cout << "size: " << myvector.size() << "\n";
-//   std::cout << "capacity: " << myvector.capacity() << "\n";
-//   std::cout << "max_size: " << myvector.max_size() << "\n";
-//   return 0;
+// 	std::cout << "size: " << myvector.size() << "\n";
+// 	std::cout << "capacity: " << myvector.capacity() << "\n";
+// 	std::cout << "max_size: " << myvector.max_size() << "\n";
+// 	return 0;
 // }
 
 // // --------------vector::size--------------
-// int main () {
-//   ft::vector<int> myints;
-//   std::cout << "0. size: " << myints.size() << '\n';
+// int main()
+// {
+// 	ft::vector<int> myints;
+// 	std::cout << "0. size: " << myints.size() << '\n';
 
-//   for (int i = 0; i < 10; i++) myints.push_back(i);
-//   std::cout << "1. size: " << myints.size() << '\n';
-//   std::cout << "1. capacity: " << myints.capacity() << '\n';
+// 	for (int i = 0; i < 10; i++)
+// 		myints.push_back(i);
+// 	std::cout << "1. size: " << myints.size() << '\n';
+// 	std::cout << "1. capacity: " << myints.capacity() << '\n';
 
-//   myints.insert(myints.end(), 10, 100);
-//   std::cout << "2. size: " << myints.size() << '\n';
+// 	myints.insert(myints.end(), 10, 100);
+// 	std::cout << "2. size: " << myints.size() << '\n';
 
-//   myints.pop_back();
-//   std::cout << "3. size: " << myints.size() << '\n';
-//   std::cout << "3. capacity: " << myints.capacity() << '\n';
-//   std::cout << "myvector contains:";
-//   for (ft::vector<int>::iterator it = myints.begin(); it != myints.end(); ++it)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
+// 	myints.pop_back();
+// 	std::cout << "3. size: " << myints.size() << '\n';
+// 	std::cout << "3. capacity: " << myints.capacity() << '\n';
+// 	std::cout << "myvector contains:";
+// 	for (ft::vector<int>::iterator it = myints.begin(); it != myints.end(); ++it)
+// 		std::cout << ' ' << *it;
+// 	std::cout << '\n';
 
-//   return 0;
+// 	return 0;
 // }
 
 // // --------------vector::rend--------------
 // // --------------vector::rbegin--------------
-// int main () {
-//   ft::vector<int> myvector(5);  // 5 default-constructed ints
+// int main()
+// {
+// 	ft::vector<int> myvector(5); // 5 default-constructed ints
 
-//   int i = 0;
+// 	int i = 0;
 
-//   ft::vector<int>::reverse_iterator rit = myvector.rbegin();
-//   for (; rit != myvector.rend(); ++rit)
-//     *rit = ++i;
+// 	ft::vector<int>::reverse_iterator rit = myvector.rbegin();
+// 	for (; rit != myvector.rend(); ++rit)
+// 		*rit = ++i;
 
-//   std::cout << "myvector contains:";
-//   for (ft::vector<int>::iterator it = myvector.begin(); it != myvector.end(); ++it)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
+// 	std::cout << "myvector contains:";
+// 	for (ft::vector<int>::iterator it = myvector.begin(); it != myvector.end(); ++it)
+// 		std::cout << ' ' << *it;
+// 	std::cout << '\n';
 
-//   return 0;
+// 	return 0;
 // }
 
 // // --------------vector::end--------------
 // // --------------vector::begin--------------
-// int main () {
-//   ft::vector<int> myvector;
-//   std::cout << "Capacity: " << myvector.capacity() << std::endl;
+// int main()
+// {
+// 	ft::vector<int> myvector;
+// 	std::cout << "Capacity: " << myvector.capacity() << std::endl;
 // 	std::cout << "Size: " << myvector.size() << std::endl;
-//   for (int i = 1; i <= 5; i++) myvector.push_back(i);
+// 	for (int i = 1; i <= 5; i++)
+// 		myvector.push_back(i);
 
-//   std::cout << "myvector contains:";
-//   for (ft::vector<int>::iterator it = myvector.begin() ; it != myvector.end(); ++it)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
-//   std::cout << "Capacity: " << myvector.capacity() << std::endl;
+// 	std::cout << "myvector contains:";
+// 	for (ft::vector<int>::iterator it = myvector.begin(); it != myvector.end(); ++it)
+// 		std::cout << ' ' << *it;
+// 	std::cout << '\n';
+// 	std::cout << "Capacity: " << myvector.capacity() << std::endl;
 // 	std::cout << "Size: " << myvector.size() << std::endl;
 
-//   return 0;
+// 	return 0;
 // }
 
 // // --------------vector::operator=--------------
-// int main () {
-//   ft::vector<int> foo(3, 0);
-//   ft::vector<int> bar(5, 0);
+// int main()
+// {
+// 	ft::vector<int> foo(3, 0);
+// 	ft::vector<int> bar(5, 0);
 
-//   bar = foo;
-//   foo = ft::vector<int>();
+// 	bar = foo;
+// 	foo = ft::vector<int>();
 
-//   std::cout << "Size of foo: " << int(foo.size()) << '\n';
-//   std::cout << "Size of bar: " << int(bar.size()) << '\n';
-//   return 0;
+// 	std::cout << "Size of foo: " << int(foo.size()) << '\n';
+// 	std::cout << "Size of bar: " << int(bar.size()) << '\n';
+// 	return 0;
 // }
 
 // // --------------vector::capacity--------------
 // // --------------vector::vector--------------
 // int main()
 // {
-//     // constructors used in the same order as described above:
-//     ft::vector<int> first;                               // empty list of ints
-//     ft::vector<int> second(5, 100);                      // four ints with value 100
-//     ft::vector<int> third(second.begin(), second.end()); // iterating through second
-//     ft::vector<int> fourth(third);                       // a copy of third
+// 	// constructors used in the same order as described above:
+// 	ft::vector<int> first;								 // empty list of ints
+// 	ft::vector<int> second(5, 100);						 // four ints with value 100
+// 	ft::vector<int> third(second.begin(), second.end()); // iterating through second
+// 	ft::vector<int> fourth(third);						 // a copy of third
 
-//     // the iterator constructor can also be used to construct from arrays:
-//     int myints[] = {16, 2, 77, 29};
-//     ft::vector<int> fifth(myints, myints + sizeof(myints) / sizeof(int));
+// 	// the iterator constructor can also be used to construct from arrays:
+// 	int myints[] = {16, 2, 77, 29};
+// 	ft::vector<int> fifth(myints, myints + sizeof(myints) / sizeof(int));
 
-//     std::cout << "The contents of the first are: ";
-//     for (ft::vector<int>::iterator it = first.begin(); it != first.end(); it++)
-//         std::cout << *it << ' ';
-//     std::cout << '\n';
+// 	std::cout << "The contents of the first are: ";
+// 	for (ft::vector<int>::iterator it = first.begin(); it != first.end(); it++)
+// 		std::cout << *it << ' ';
+// 	std::cout << '\n';
 
-//     std::cout << "The contents of the second are: ";
-//     for (ft::vector<int>::iterator it = second.begin(); it != second.end(); it++)
-//         std::cout << *it << ' ';
-//     std::cout << '\n';
+// 	std::cout << "The contents of the second are: ";
+// 	for (ft::vector<int>::iterator it = second.begin(); it != second.end(); it++)
+// 		std::cout << *it << ' ';
+// 	std::cout << '\n';
 
-//     std::cout << "The contents of the third are:  ";
-//     for (ft::vector<int>::iterator it = third.begin(); it != third.end(); it++)
-//         std::cout << *it << ' ';
-//     std::cout << '\n';
+// 	std::cout << "The contents of the third are:  ";
+// 	for (ft::vector<int>::iterator it = third.begin(); it != third.end(); it++)
+// 		std::cout << *it << ' ';
+// 	std::cout << '\n';
 
-//     std::cout << "The contents of the fourth are: ";
-//     for (ft::vector<int>::iterator it = fourth.begin(); it != fourth.end(); it++)
-//         std::cout << *it << ' ';
-//     std::cout << '\n';
+// 	std::cout << "The contents of the fourth are: ";
+// 	for (ft::vector<int>::iterator it = fourth.begin(); it != fourth.end(); it++)
+// 		std::cout << *it << ' ';
+// 	std::cout << '\n';
 
-//     std::cout << "The contents of the fifth are:  ";
-//     for (ft::vector<int>::iterator it = fifth.begin(); it != fifth.end(); it++)
-//         std::cout << *it << ' ';
-//     std::cout << '\n';
+// 	std::cout << "The contents of the fifth are:  ";
+// 	for (ft::vector<int>::iterator it = fifth.begin(); it != fifth.end(); it++)
+// 		std::cout << *it << ' ';
+// 	std::cout << '\n';
 
-//     std::cout << "Capacity: " << first.capacity() << std::endl;
-//     std::cout << "Size: " << first.size() << std::endl;
-//     std::cout << "Capacity: " << second.capacity() << std::endl;
-//     std::cout << "Size: " << second.size() << std::endl;
-//     std::cout << "Capacity: " << third.capacity() << std::endl;
-//     std::cout << "Size: " << third.size() << std::endl;
-//     std::cout << "Capacity: " << fourth.capacity() << std::endl;
-//     std::cout << "Size: " << fourth.size() << std::endl;
-//     std::cout << "Capacity: " << fifth.capacity() << std::endl;
-//     std::cout << "Size: " << fifth.size() << std::endl;
+// 	std::cout << "Capacity: " << first.capacity() << std::endl;
+// 	std::cout << "Size: " << first.size() << std::endl;
+// 	std::cout << "Capacity: " << second.capacity() << std::endl;
+// 	std::cout << "Size: " << second.size() << std::endl;
+// 	std::cout << "Capacity: " << third.capacity() << std::endl;
+// 	std::cout << "Size: " << third.size() << std::endl;
+// 	std::cout << "Capacity: " << fourth.capacity() << std::endl;
+// 	std::cout << "Size: " << fourth.size() << std::endl;
+// 	std::cout << "Capacity: " << fifth.capacity() << std::endl;
+// 	std::cout << "Size: " << fifth.size() << std::endl;
 
-//     return 0;
+// 	return 0;
 // }
 
+// ---------------------------------------------------------------------------------------------------------
+
 // // std::relational operators (list)
-// int main () {
-//   ft::list<int> a;
-//   a.push_back(10); a.push_back(20); a.push_back(30);
-//   ft::list<int> b;
-//   b.push_back(10); b.push_back(20); b.push_back(30);
-//   ft::list<int> c;
-//   c.push_back(30); c.push_back(20); c.push_back(10);
+// int main()
+// {
+// 	ft::list<int> a;
+// 	a.push_back(10);
+// 	a.push_back(20);
+// 	a.push_back(30);
+// 	ft::list<int> b;
+// 	b.push_back(10);
+// 	b.push_back(20);
+// 	b.push_back(30);
+// 	ft::list<int> c;
+// 	c.push_back(30);
+// 	c.push_back(20);
+// 	c.push_back(10);
 
-//   if (a == b) std::cout << "a and b are equal\n";
-//   if (b != c) std::cout << "b and c are not equal\n";
-//   if (b < c) std::cout << "b is less than c\n";
-//   if (c > b) std::cout << "c is greater than b\n";
-//   if (a <= b) std::cout << "a is less than or equal to b\n";
-//   if (a >= b) std::cout << "a is greater than or equal to b\n";
+// 	if (a == b)
+// 		std::cout << "a and b are equal\n";
+// 	if (b != c)
+// 		std::cout << "b and c are not equal\n";
+// 	if (b < c)
+// 		std::cout << "b is less than c\n";
+// 	if (c > b)
+// 		std::cout << "c is greater than b\n";
+// 	if (a <= b)
+// 		std::cout << "a is less than or equal to b\n";
+// 	if (a >= b)
+// 		std::cout << "a is greater than or equal to b\n";
 
-//   return 0;
+// 	return 0;
 // }
 
 // // --------------list::sort--------------
 // // comparison, not case sensitive.
-// bool compare_nocase (const std::string& first, const std::string& second) {
-//   unsigned int i=0;
-//   while ( (i < first.length()) && (i < second.length()) ) {
-//     if (tolower(first[i]) < tolower(second[i])) return true;
-//     else if (tolower(first[i]) > tolower(second[i])) return false;
-//     ++i;
-//   }
-//   return ( first.length() < second.length() );
+// bool compare_nocase(const std::string &first, const std::string &second)
+// {
+// 	unsigned int i = 0;
+// 	while ((i < first.length()) && (i < second.length()))
+// 	{
+// 		if (tolower(first[i]) < tolower(second[i]))
+// 			return true;
+// 		else if (tolower(first[i]) > tolower(second[i]))
+// 			return false;
+// 		++i;
+// 	}
+// 	return (first.length() < second.length());
 // }
 
-// int main () {
-//   ft::list<std::string> mylist;
-//   ft::list<std::string>::iterator it;
-//   mylist.push_back ("one");
-//   mylist.push_back ("two");
-//   mylist.push_back ("Three");
+// int main()
+// {
+// 	ft::list<std::string> mylist;
+// 	ft::list<std::string>::iterator it;
+// 	mylist.push_back("one");
+// 	mylist.push_back("two");
+// 	mylist.push_back("Three");
 
-//   mylist.sort();
+// 	mylist.sort();
 
-//   std::cout << "mylist contains:";
-//   for (it = mylist.begin(); it != mylist.end(); ++it)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
+// 	std::cout << "mylist contains:";
+// 	for (it = mylist.begin(); it != mylist.end(); ++it)
+// 		std::cout << ' ' << *it;
+// 	std::cout << '\n';
 
-//   mylist.sort(compare_nocase);
+// 	mylist.sort(compare_nocase);
 
-//   std::cout << "mylist contains:";
-//   for (it = mylist.begin(); it != mylist.end(); ++it)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
+// 	std::cout << "mylist contains:";
+// 	for (it = mylist.begin(); it != mylist.end(); ++it)
+// 		std::cout << ' ' << *it;
+// 	std::cout << '\n';
 
-//   return 0;
+// 	return 0;
 // }
 
 // // --------------list::reverse--------------
-// int main () {
-//   ft::list<int> mylist;
+// int main()
+// {
+// 	ft::list<int> mylist;
 
-//   for (int i = 1; i < 10; ++i) mylist.push_back(i);
+// 	for (int i = 1; i < 10; ++i)
+// 		mylist.push_back(i);
 
-//   mylist.reverse();
+// 	mylist.reverse();
 
-//   std::cout << "mylist contains:";
-//   for (ft::list<int>::iterator it = mylist.begin(); it != mylist.end(); ++it)
-//     std::cout << ' ' << *it;
+// 	std::cout << "mylist contains:";
+// 	for (ft::list<int>::iterator it = mylist.begin(); it != mylist.end(); ++it)
+// 		std::cout << ' ' << *it;
 
-//   std::cout << '\n';
+// 	std::cout << '\n';
 
-//   return 0;
+// 	return 0;
 // }
 
 // // --------------list::merge--------------
 // // compare only integral part:
-// bool mycomparison (double first, double second) {
-//     return ( int(first) < int(second) );
+// bool mycomparison(double first, double second)
+// {
+// 	return (int(first) < int(second));
 // }
 
-// int main () {
-//   ft::list<double> first, second;
+// int main()
+// {
+// 	ft::list<double> first, second;
 
-//   first.push_back (3.9);
-//   first.push_back (2.2);
-//   first.push_back (2.9);
+// 	first.push_back(3.9);
+// 	first.push_back(2.2);
+// 	first.push_back(2.9);
 
-//   second.push_back (3.7);
-//   second.push_back (7.1);
-//   second.push_back (1.4);
+// 	second.push_back(3.7);
+// 	second.push_back(7.1);
+// 	second.push_back(1.4);
 
-//   first.sort();
-// //   second.sort();
+// 	first.sort();
+// 	//   second.sort();
+// 	first.merge(second);
 
-//   first.merge(second);
+// 	// (second is now empty)
+// 	second.push_back(2.1);
 
-//   // (second is now empty)
+// 	first.merge(second, mycomparison);
 
-//   second.push_back(2.1);
+// 	std::cout << "first contains:";
+// 	for (ft::list<double>::iterator it = first.begin(); it != first.end(); ++it)
+// 		std::cout << ' ' << *it;
+// 	std::cout << '\n';
 
-//   first.merge(second, mycomparison);
-
-//   std::cout << "first contains:";
-//   for (ft::list<double>::iterator it = first.begin(); it != first.end(); ++it)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
-
-//   return 0;
+// 	return 0;
 // }
 
-// // --------------list::unique--------------
-// // a binary predicate implemented as a function:
-// bool same_integral_part (double first, double second) {
-//   return ( int(first)==int(second) );
-// }
+// --------------list::unique--------------
+// a binary predicate implemented as a function:
+bool same_integral_part(double first, double second)
+{
+	return (int(first) == int(second));
+}
 
-// // a binary predicate implemented as a class:
-// struct is_near {
-//   bool operator() (double first, double second)
-//   { return (fabs(first - second) < 5.0); }
-// };
+// a binary predicate implemented as a class:
+struct is_near
+{
+	bool operator()(double first, double second)
+	{
+		return (fabs(first - second) < 5.0);
+	}
+};
 
-// int main () {
-//   double mydoubles[] = {12.15, 2.72, 73.0, 12.77, 3.14, 12.77, 73.35, 72.25, 15.3, 72.25};
-//   ft::list<double> mylist(mydoubles, mydoubles + 10);
+// int main()
+// {
+// 	double mydoubles[] = {12.15, 2.72, 73.0, 12.77, 3.14, 12.77, 73.35, 72.25, 15.3, 72.25};
+// 	ft::list<double> mylist(mydoubles, mydoubles + 10);
 
-//   mylist.sort();             //  2.72,  3.14, 12.15, 12.77, 12.77,
-//                              // 15.3,  72.25, 72.25, 73.0,  73.35
+// 	mylist.sort(); //  2.72,  3.14, 12.15, 12.77, 12.77,
+// 				   // 15.3,  72.25, 72.25, 73.0,  73.35
 
-//   mylist.unique();           //  2.72,  3.14, 12.15, 12.77
-//                              // 15.3,  72.25, 73.0,  73.35
+// 	mylist.unique(); //  2.72,  3.14, 12.15, 12.77
+// 					 // 15.3,  72.25, 73.0,  73.35
 
-//   mylist.unique(same_integral_part);  //  2.72,  3.14, 12.15
-//                                        // 15.3,  72.25, 73.0
+// 	mylist.unique(same_integral_part); //  2.72,  3.14, 12.15
+// 									   // 15.3,  72.25, 73.0
 
-//   mylist.unique(is_near());           //  2.72, 12.15, 72.25
+// 	mylist.unique(is_near()); //  2.72, 12.15, 72.25
 
-//   std::cout << "mylist contains:";
-//   for (ft::list<double>::iterator it = mylist.begin(); it != mylist.end(); ++it)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
+// 	std::cout << "mylist contains:";
+// 	for (ft::list<double>::iterator it = mylist.begin(); it != mylist.end(); ++it)
+// 		std::cout << ' ' << *it;
+// 	std::cout << '\n';
 
-//   return 0;
+// 	return 0;
 // }
 
 // // list::remove_if
@@ -1183,183 +1223,182 @@
 // }
 
 // // --------------list::remove--------------
-// int main ()
+// int main()
 // {
-//   int myints[]= {17, 89, 20, 14};
-//   ft::list<int> mylist(myints, myints + 4);
+// 	int myints[] = {17, 89, 20, 14};
+// 	ft::list<int> mylist(myints, myints + 4);
 
-//   mylist.remove(20);
-//   mylist.remove(25);
+// 	mylist.remove(20);
+// 	mylist.remove(25);
 
-//   std::cout << "mylist contains:";
-//   for (ft::list<int>::iterator it = mylist.begin(); it != mylist.end(); ++it)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
+// 	std::cout << "mylist contains:";
+// 	for (ft::list<int>::iterator it = mylist.begin(); it != mylist.end(); ++it)
+// 		std::cout << ' ' << *it;
+// 	std::cout << '\n';
 
-//   return 0;
+// 	return 0;
 // }
 
+// TODO check
 // // --------------list::splice--------------
-// int main () {
-//   std::list<int> mylist1, mylist2;
-//   std::list<int>::iterator it;
+// int main()
+// {
+// 	std::list<int> mylist1, mylist2;
+// 	std::list<int>::iterator it;
 
-//   // set some initial values:
-//   for (int i = 1; i <= 4; ++i)
-//      mylist1.push_back(i);      // mylist1: 1 2 3 4
+// 	// set some initial values:
+// 	for (int i = 1; i <= 4; ++i)
+// 		mylist1.push_back(i); // mylist1: 1 2 3 4
 
-//   for (int i = 1; i <= 3; ++i)
-//      mylist2.push_back(i * 10);   // mylist2: 10 20 30
+// 	for (int i = 1; i <= 3; ++i)
+// 		mylist2.push_back(i * 10); // mylist2: 10 20 30
 
-//   it = mylist1.begin();
-//   ++it;                         // points to 2
+// 	it = mylist1.begin();
+// 	++it; // points to 2
 
-//   mylist1.splice(it, mylist2); // mylist1: 1 10 20 30 2 3 4
-//                                 // mylist2 (empty)
-//                                 // "it" still points to 2 (the 5th element)
+// 	mylist1.splice(it, mylist2); // mylist1: 1 10 20 30 2 3 4
+// 								 // mylist2 (empty)
+// 								 // "it" still points to 2 (the 5th element)
 
-//   mylist2.splice(mylist2.begin(), mylist1, it);
-//                                 // mylist1: 1 10 20 30 3 4
-//                                 // mylist2: 2
-//                                 // "it" is now invalid.
-//   std::cout << "*it: " << *it << std::endl;
-//   it = mylist1.begin();
-//   ++it; ++it; ++it;
-//   std::cout << "*it: " << *it << std::endl; // "it" points now to 30
-//   // std::advance(it, 3);
+// 	mylist2.splice(mylist2.begin(), mylist1, it);
+// 	// mylist1: 1 10 20 30 3 4
+// 	// mylist2: 2
+// 	// "it" is now invalid.
+// 	std::cout << "*it: " << *it << std::endl;
+// 	it = mylist1.begin();
+// 	++it;
+// 	++it;
+// 	++it;
+// 	std::cout << "*it: " << *it << std::endl; // "it" points now to 30
 
-//   mylist1.splice(mylist1.begin(), mylist1, it, mylist1.end());
-//                                 // mylist1: 30 3 4 1 10 20
+// 	mylist1.splice(mylist1.begin(), mylist1, it, mylist1.end());
+// 	// mylist1: 30 3 4 1 10 20
 
-//   std::cout << "mylist1 contains:";
-//   for (it = mylist1.begin(); it != mylist1.end(); ++it)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
+// 	std::cout << "mylist1 contains:";
+// 	for (it = mylist1.begin(); it != mylist1.end(); ++it)
+// 		std::cout << ' ' << *it;
+// 	std::cout << '\n';
 
-//   std::cout << "mylist2 contains:";
-//   for (it = mylist2.begin(); it != mylist2.end(); ++it)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
+// 	std::cout << "mylist2 contains:";
+// 	for (it = mylist2.begin(); it != mylist2.end(); ++it)
+// 		std::cout << ' ' << *it;
+// 	std::cout << '\n';
 
-//   return 0;
+// 	return 0;
 // }
 
 // // --------------list::resize--------------
-// int main () {
-//   ft::list<int> mylist;
+// int main()
+// {
+// 	ft::list<int> mylist;
 
-//   // set some initial content:
-//   for (int i = 1; i < 10; ++i) mylist.push_back(i);
+// 	// set some initial content:
+// 	for (int i = 1; i < 10; ++i)
+// 		mylist.push_back(i);
 
-//   mylist.resize(5);
-//   mylist.resize(8, 100);
-//   mylist.resize(12);
+// 	mylist.resize(5);
+// 	mylist.resize(8, 100);
+// 	mylist.resize(12);
 
-//   std::cout << "mylist contains:";
-//   for (ft::list<int>::iterator it = mylist.begin(); it != mylist.end(); ++it)
-//     std::cout << ' ' << *it;
+// 	std::cout << "mylist contains:";
+// 	for (ft::list<int>::iterator it = mylist.begin(); it != mylist.end(); ++it)
+// 		std::cout << ' ' << *it;
 
-//   std::cout << '\n';
+// 	std::cout << '\n';
 
-//   return 0;
+// 	return 0;
 // }
 
 // // --------------swap(list)--------------
-// int main () {
-//   ft::list<int> foo(3,100);   // three ints with a value of 100
-//   ft::list<int> bar(5,200);   // five ints with a value of 200
+// int main()
+// {
+// 	ft::list<int> foo(3, 100); // three ints with a value of 100
+// 	ft::list<int> bar(5, 200); // five ints with a value of 200
 
-//   ft::swap(foo, bar);
+// 	ft::swap(foo, bar);
 
-//   std::cout << "foo contains:";
-//   for (ft::list<int>::iterator it = foo.begin(); it != foo.end(); ++it)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
+// 	std::cout << "foo contains:";
+// 	for (ft::list<int>::iterator it = foo.begin(); it != foo.end(); ++it)
+// 		std::cout << ' ' << *it;
+// 	std::cout << '\n';
 
-//   std::cout << "bar contains:";
-//   for (ft::list<int>::iterator it = bar.begin(); it != bar.end(); ++it)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
+// 	std::cout << "bar contains:";
+// 	for (ft::list<int>::iterator it = bar.begin(); it != bar.end(); ++it)
+// 		std::cout << ' ' << *it;
+// 	std::cout << '\n';
 
-//   return 0;
+// 	return 0;
 // }
 
 // // --------------list::swap--------------
-// int main () {
-//   ft::list<int> first(3, 100);   // three ints with a value of 100
-//   ft::list<int> second(5, 200);  // five ints with a value of 200
+// int main()
+// {
+// 	ft::list<int> first(3, 100);  // three ints with a value of 100
+// 	ft::list<int> second(5, 200); // five ints with a value of 200
 
-//     std::cout << "first contains:";
-//   for (ft::list<int>::iterator it = first.begin(); it != first.end(); it++)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
+// 	std::cout << "first contains:";
+// 	for (ft::list<int>::iterator it = first.begin(); it != first.end(); it++)
+// 		std::cout << ' ' << *it;
+// 	std::cout << '\n';
 
-//   std::cout << "second contains:";
-//   for (ft::list<int>::iterator it = second.begin(); it != second.end(); it++)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
+// 	std::cout << "second contains:";
+// 	for (ft::list<int>::iterator it = second.begin(); it != second.end(); it++)
+// 		std::cout << ' ' << *it;
+// 	std::cout << '\n';
 
-//   first.swap(second);
+// 	first.swap(second);
+// 	// ft::swap(first, second);
 
-//   std::cout << "first contains:";
-//   for (ft::list<int>::iterator it = first.begin(); it != first.end(); it++)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
+// 	std::cout << "first contains:";
+// 	for (ft::list<int>::iterator it = first.begin(); it != first.end(); it++)
+// 		std::cout << ' ' << *it;
+// 	std::cout << '\n';
 
-//   std::cout << "second contains:";
-//   for (ft::list<int>::iterator it = second.begin(); it != second.end(); it++)
-//     std::cout << ' ' << *it;
-//   std::cout << '\n';
+// 	std::cout << "second contains:";
+// 	for (ft::list<int>::iterator it = second.begin(); it != second.end(); it++)
+// 		std::cout << ' ' << *it;
+// 	std::cout << '\n';
 
-//   return 0;
+// 	return 0;
 // }
 
-// --------------list::erase--------------
-int main()
-{
-    ft::list<int> mylist;
-    ft::list<int>::iterator it, it1, it2;
+// // --------------list::erase--------------
+// int main()
+// {
+//     std::list<int> mylist;
+//     std::list<int>::iterator it, it1, it2;
 
-  // set some values:
-  for (int i = 1; i < 10; ++i) mylist.push_back(i * 10);
+//   // set some values:
+//   for (int i = 1; i < 10; ++i) mylist.push_back(i * 10);
 
-                              // 10 20 30 40 50 60 70 80 90
-  it1 = mylist.begin();       // ^                          ^
-  it2 = mylist.end();
-  --it2;  --it2;  --it2;      // ^                 ^
-  ++it1;                      //    ^              ^
+//                               // 10 20 30 40 50 60 70 80 90
+//   it1 = mylist.begin();       // ^                          ^
+//   it2 = mylist.end();
+//   --it2;  --it2;  --it2;      // ^                 ^
+//   ++it1;                      //    ^              ^
 
-std::cout << "it1: " << *it1.getValue()->value << "\n";
-std::cout << "it2: " << *it2.getValue()->value << "\n";
+//    it1 = mylist.erase(it1);   // 10 30 40 50 60 70 80 90
+//                               //    ^           ^
+//    it2 = mylist.erase (it2);  // 10 30 40 50 60 80 90
+//                               //    ^           ^
+//   ++it1;                      //       ^        ^
+//   --it2;                      //       ^     ^
 
-   it1 = mylist.erase(it1);   // 10 30 40 50 60 70 80 90
-                              //    ^           ^
-std::cout << "it1: " << *it1.getValue()->value << "\n";
-std::cout << "it2: " << *it2.getValue()->value << "\n";
-  it2 = mylist.erase (it2);   // 10 30 40 50 60 80 90
-                              //    ^           ^
-// std::cout << "it1: " << *it1.getValue()->value << "\n";
-// std::cout << "it2: " << *it2.getValue()->value << "\n";
-  ++it1;                      //       ^        ^
-  --it2;                      //       ^     ^
+// std::cout << "mylist contains:";
+//   for (it = mylist.begin(); it != mylist.end(); ++it)
+//     std::cout << ' ' << *it;
+//   std::cout << '\n';
 
-std::cout << "mylist contains:";
-  for (it = mylist.begin(); it != mylist.end(); ++it)
-    std::cout << ' ' << *it;
-  std::cout << '\n';
+//   mylist.erase(it1, it2);     // 10 30 60 80 90
+//                               //        ^
 
-// std::cout << "it1: " << *it1.getValue()->value << "\n";
-// std::cout << "it2: " << *it2.getValue()->value << "\n";
-
-  mylist.erase(it1, it2);     // 10 30 60 80 90
-                              //        ^
-
-  std::cout << "mylist contains:";
-  for (it1 = mylist.begin(); it1 != mylist.end(); ++it1)
-    std::cout << ' ' << *it1;
-  std::cout << '\n';
-    return 0;
-}
+//   std::cout << "mylist contains:";
+//   for (it1 = mylist.begin(); it1 != mylist.end(); ++it1)
+//     std::cout << ' ' << *it1;
+//   std::cout << '\n';
+//   while (true) { } //for checking leaks
+//     return 0;
+// }
 
 // // --------------list::insert--------------
 // int main ()
@@ -1669,3 +1708,89 @@ std::cout << "mylist contains:";
 
 // 	return 0;
 // }
+
+// int main()
+// {
+// 	ft::list<int> mylist1, mylist2;
+// 	ft::list<int>::iterator it;
+
+// 	// set some initial values:
+// 	for (int i = 1; i <= 4; ++i)
+// 		mylist1.push_back(i); // mylist1: 1 2 3 4
+
+// 	for (int i = 1; i <= 3; ++i)
+// 		mylist2.push_back(i * 10); // mylist2: 10 20 30
+
+// 	it = mylist1.end();
+// 	++it; ++it; // points to 2 ?
+// 	std::cout << "*it: " << *it << std::endl; // "it" points now to 2
+
+// 	mylist1.splice(it, mylist2); // mylist1: 1 10 20 30 2 3 4
+// 								 // mylist2 (empty)
+// 								 // "it" still points to 2 (the 5th element)
+
+// 	mylist2.splice(mylist2.begin(), mylist1, it);
+// 	// mylist1: 1 10 20 30 3 4
+// 	// mylist2: 2
+// 	// "it" is now invalid.
+// 	std::cout << "*it: " << *it << std::endl;
+// 	it = mylist1.begin();
+// 	++it;
+// 	++it;
+// 	++it;
+// 	std::cout << "*it: " << *it << std::endl; // "it" points now to 30
+
+// 	mylist1.splice(mylist1.begin(), mylist1, it, mylist1.end());
+// 	// mylist1: 30 3 4 1 10 20
+
+// 	std::cout << "mylist1 contains:";
+// 	for (it = mylist1.begin(); it != mylist1.end(); ++it)
+// 		std::cout << ' ' << *it;
+// 	std::cout << '\n';
+
+// 	std::cout << "mylist2 contains:";
+// 	for (it = mylist2.begin(); it != mylist2.end(); ++it)
+// 		std::cout << ' ' << *it;
+// 	std::cout << '\n';
+
+// 	return 0;
+// }
+
+int main()
+{
+	ft::list<int> a;
+	ft::list<int> aa;
+	std::list<int> b;
+	std::list<int> bb;
+
+	a.push_back(10);
+	a.push_back(10);
+	a.push_back(10);
+
+	b.push_back(10);
+	b.push_back(10);
+	b.push_back(10);
+
+	aa.push_back(10);
+	aa.push_back(10);
+
+	bb.push_back(10);
+	bb.push_back(10);
+
+	std::cout << "------------------" << std::endl;
+	std::cout << "ft::list  == " << (a == aa) << std::endl;
+	std::cout << "std::list == " << (b == bb) << std::endl;
+	std::cout << "ft::list  != " << (a != aa) << std::endl;
+	std::cout << "std::list != " << (b != bb) << std::endl;
+	std::cout << "ft::list  <  " << (a < aa) << std::endl;
+	std::cout << "std::list <  " << (b < bb) << std::endl;
+	std::cout << "ft::list  <= " << (a <= aa) << std::endl;
+	std::cout << "std::list <= " << (b <= bb) << std::endl;
+	std::cout << "ft::list  >  " << (a > aa) << std::endl;
+	std::cout << "std::list >  " << (b > bb) << std::endl;
+	std::cout << "ft::list  >= " << (a >= aa) << std::endl;
+	std::cout << "std::list >= " << (b >= bb) << std::endl;
+	std::cout << "------------------" << std::endl;
+
+	return 0;
+}

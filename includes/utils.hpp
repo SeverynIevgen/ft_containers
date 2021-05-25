@@ -90,7 +90,17 @@ public:
         return (_ptr == it._ptr);
     }
 
+    bool operator==(const bidirectional_iterator &it) const
+    {
+        return (_ptr == it._ptr);
+    }
+
     bool operator!=(const bidirectional_iterator &it)
+    {
+        return (_ptr != it._ptr);
+    }
+
+    bool operator!=(const bidirectional_iterator &it) const
     {
         return (_ptr != it._ptr);
     }
@@ -224,12 +234,12 @@ public:
         return (it);
     }
 
-    bool operator==(reverse_iterator &it)
+    bool operator==(const reverse_iterator &it)
     {
         return (_ptr == it._ptr);
     }
 
-    bool operator!=(reverse_iterator &it)
+    bool operator!=(const reverse_iterator &it)
     {
         return (_ptr != it._ptr);
     }
@@ -294,12 +304,12 @@ public:
         return (it);
     }
 
-    bool operator==(const_reverse_iterator &it)
+    bool operator==(const const_reverse_iterator &it) const
     {
         return (_ptr == it._ptr);
     }
 
-    bool operator!=(const_reverse_iterator &it)
+    bool operator!=(const const_reverse_iterator &it) const
     {
         return (_ptr != it._ptr);
     }
@@ -458,9 +468,9 @@ public:
 
     explicit const_random_access_iterator(T *ptr) : _ptr(ptr) {}
 
-    const_random_access_iterator(const const_random_access_iterator &const_random_access_iterator)
+    const_random_access_iterator(const random_access_iterator<T> &iter)
     {
-        *this = const_random_access_iterator;
+        *this = iter;
     }
 
     const_random_access_iterator &operator=(const const_random_access_iterator &iter)
@@ -735,7 +745,7 @@ public:
 
     virtual ~const_reverse_random_access_iterator() {}
 
-    const_reverse_random_access_iterator &operator++()
+    const const_reverse_random_access_iterator &operator++()
     {
         _ptr--;
         return (*this);
@@ -962,7 +972,6 @@ class reverse_map_iterator
 public:
     typedef std::pair<Key, T> cell_type;
     typedef reverse_map_iterator<Key, T, Pointer, Ref> reverse_iterator;
-    // typedef reverse_map_iterator<Key, T, T *, T &> iterator; // TODO Really?
 
 private:
     typedef map_cell<Key, T> *pointer;
