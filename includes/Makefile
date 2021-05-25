@@ -12,7 +12,7 @@
 
 NAME = test
 
-SRCS = mainQueue.cpp
+SRCS = ../mainList.cpp
 
 HEADER = utils.hpp list.hpp
 

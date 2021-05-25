@@ -26,7 +26,7 @@ namespace ft
     }
 
     template <class Key, class T, class Compare = std::less<Key>,
-              class Alloc = std::allocator<std::pair<const Key, T> > >
+              class Alloc = std::allocator<std::pair<const Key, T>>>
     class map
     {
     public:
@@ -84,7 +84,6 @@ namespace ft
         // Simple initialization by creation empty cell
         void _map_init() { _root = _new_cell(key_type(), mapped_type(), nullptr, true); }
 
-        // cell _insert_cell(cell i, key_type key, mapped_type val, bool empty = false)
         cell _insert_cell(cell i, key_type key, mapped_type val)
         {
             if (i->empty)
@@ -199,6 +198,18 @@ namespace ft
         {
             this->_map_init();
             this->insert(first, last);
+        }
+
+        //  --- copy constructor ---
+        map(const map &x) { *this = x; }
+
+        map &operator=(const map &copy)
+        {
+            // this->clear(); // TODOTODOTODO
+            this->_size = 0;
+            this->_map_init();
+            this->insert(copy.begin(), copy.end());
+            return (*this);
         }
 
         //	Insert elements

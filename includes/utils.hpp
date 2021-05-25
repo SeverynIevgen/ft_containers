@@ -47,8 +47,8 @@ public:
     typedef typename std::allocator<T>::reference reference;
     typedef typename std::allocator<T>::pointer pointer;
 
-    explicit bidirectional_iterator() : _ptr(nullptr) {}
-    explicit bidirectional_iterator(t_list<T> *ptr) : _ptr(ptr) {}
+    bidirectional_iterator() : _ptr(nullptr) {}
+    bidirectional_iterator(t_list<T> *ptr) : _ptr(ptr) {}
 
     bidirectional_iterator(const bidirectional_iterator &copy) : _ptr(copy._ptr) {}
     bidirectional_iterator &operator=(const bidirectional_iterator &equal)

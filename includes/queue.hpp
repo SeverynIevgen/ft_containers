@@ -35,7 +35,7 @@ namespace ft
         value_type &back() { return (this->cont.back()); }
         const value_type &back() const { return (this->cont.back()); }
         void push(const value_type &val) { this->cont.push_back(val); }
-        void pop() { this->cont.pop_back(); }
+        void pop() { this->cont.pop_front(); }
 
         friend bool operator==(const queue<T, Container> &lhs, const queue<T, Container> &rhs)
         {

@@ -17,7 +17,7 @@
 
 namespace ft
 {
-    template <typename T, class Alloc = std::allocator<T> >
+    template <typename T, class Alloc = std::allocator<T>>
     class list
     {
     public:
@@ -274,6 +274,7 @@ namespace ft
 
         // Delete last element
         void pop_back()
+        // void pop_front()
         {
             t_list<T> *temp;
             temp = _back->prev;
@@ -296,10 +297,12 @@ namespace ft
 
         // Delete first element
         void pop_front()
+        // void pop_back()
         {
             if (_size == 1)
             {
                 pop_back();
+                // pop_front();
                 return;
             }
             t_list<T> *temp;
@@ -531,19 +534,10 @@ namespace ft
         // Reverse the order of elements
         void reverse()
         {
-            T *tmp;
             iterator first = begin();
             iterator second = end();
-            size_t half = (_size + 1) / 2;
-            --second;
-            for (size_t i = 0; i < half; i++)
-            {
-                tmp = first.getValue()->value;
-                first.getValue()->value = second.getValue()->value;
-                second.getValue()->value = tmp;
-                ++first;
-                --second;
-            }
+            while ((first != second) && (first != --second))
+                std::swap(*first++, *second);
         }
 
         friend bool operator==(const list<T, Alloc> &lhs, const list<T, Alloc> &rhs)
@@ -577,17 +571,12 @@ namespace ft
             const_iterator it1End = lhs.end();
             const_iterator it2 = rhs.begin();
             const_iterator it2End = rhs.end();
-            while (it1 != it1End && it2 != it2End)
+            while (it1 != it1End && it2 != it2End && *it1 == *it2)
             {
-                if (*it1 < *it2)
-                    return (true);
-                else
-                {
-                    ++it1;
-                    ++it2;
-                }
+                it1++;
+                it2++;
             }
-            return (false);
+            return ((it1 == it1End && it2 != it2End) || *it1 < *it2);
         }
 
         friend bool operator>(const list<T, Alloc> &lhs, const list<T, Alloc> &rhs)
@@ -596,17 +585,12 @@ namespace ft
             const_iterator it1End = lhs.end();
             const_iterator it2 = rhs.begin();
             const_iterator it2End = rhs.end();
-            while (it1 != it1End && it2 != it2End)
+            while (it1 != it1End && it2 != it2End && *it1 == *it2)
             {
-                if (*it1 > *it2)
-                    return (true);
-                else
-                {
-                    ++it1;
-                    ++it2;
-                }
+                it1++;
+                it2++;
             }
-            return (false);
+            return ((it2 == it2End && it1 != it1End) || *it1 > *it2);
         }
 
         friend bool operator<=(const list<T, Alloc> &lhs, const list<T, Alloc> &rhs)

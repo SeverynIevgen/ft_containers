@@ -17,7 +17,7 @@
 
 namespace ft
 {
-    template <typename T, class Alloc = std::allocator<T> >
+    template <typename T, class Alloc = std::allocator<T>>
     class vector
     {
     public:
@@ -450,17 +450,12 @@ namespace ft
             const_iterator it1End = lhs.end();
             const_iterator it2 = rhs.begin();
             const_iterator it2End = rhs.end();
-            while (it1 != it1End && it2 != it2End)
+            while (it1 != it1End && it2 != it2End && *it1 == *it2)
             {
-                if (*it1 < *it2)
-                    return (true);
-                else
-                {
-                    ++it1;
-                    ++it2;
-                }
+                it1++;
+                it2++;
             }
-            return (false);
+            return ((it1 == it1End && it2 != it2End) || *it1 < *it2);
         }
 
         friend bool operator>(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
@@ -469,17 +464,12 @@ namespace ft
             const_iterator it1End = lhs.end();
             const_iterator it2 = rhs.begin();
             const_iterator it2End = rhs.end();
-            while (it1 != it1End && it2 != it2End)
+            while (it1 != it1End && it2 != it2End && *it1 == *it2)
             {
-                if (*it1 > *it2)
-                    return (true);
-                else
-                {
-                    ++it1;
-                    ++it2;
-                }
+                it1++;
+                it2++;
             }
-            return (false);
+            return ((it2 == it2End && it1 != it1End) || *it1 > *it2);
         }
 
         friend bool operator<=(const vector<T, Alloc> &lhs, const vector<T, Alloc> &rhs)
