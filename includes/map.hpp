@@ -26,7 +26,7 @@ namespace ft
     }
 
     template <class Key, class T, class Compare = std::less<Key>,
-              class Alloc = std::allocator<std::pair<const Key, T>>>
+              class Alloc = std::allocator<std::pair<const Key, T> > >
     class map
     {
     public:
@@ -66,6 +66,7 @@ namespace ft
 
     private:
         cell _root;
+        cell _end;
         size_type _size;
         key_compare _comp;
         allocator_type _alloc;
@@ -81,42 +82,88 @@ namespace ft
             return (ret);
         }
 
-        // Simple initialization by creation empty cell
-        void _map_init() { _root = _new_cell(key_type(), mapped_type(), nullptr, true); }
+        void _cell_destruct(cell i)
+        {
+            if (i->right)
+                this->_cell_destruct(i->right);
+            if (i->left)
+                this->_cell_destruct(i->left);
+            delete (i);
+        }
 
-        cell _insert_cell(cell i, key_type key, mapped_type val)
+        // Simple initialization by creation empty cell
+        void _map_init()
+        {
+            // this->_root = this->_new_cell(key_type(), mapped_type(), nullptr, true);
+            // this->_root->right = this->_new_cell(key_type(), mapped_type(), this->_root, true);
+            this->_end = this->_new_cell(key_type(), mapped_type(), nullptr, true);
+            this->_root = this->_end;
+        }
+
+        // cell _end() const { return (this->_end); } // TODO is important?
+
+        cell _insert_cell(cell i, key_type key, mapped_type val, bool end = false)
         {
             if (i->empty)
             {
-                i->left = _new_cell(key, val, nullptr);
-                i->empty = false;
-                _root = i->left;
-                free(i);
-                return (_root);
+                // std::cout << "1HereHere\nSize = " << this->_size << "\n";
+                if (this->_size == 1)
+                {
+                    // std::cout << "HereHere\n";
+                    this->_root = this->_new_cell(key, val, i, end);
+                    this->_root->right = this->_end;
+                    return (this->_root);
+                }
+                i->parent->right = this->_new_cell(key, val, i, end);
+                i->parent->right->right = this->_end;
+                return (i->parent->right);
+                // if (i->left)
+                //     return (this->_insert_cell(i->left, key, val));
+                // i->left = this->_new_cell(key, val, i, end);
+                // return (i->left);
+
+                // if (!i->left)
+                // {
+                //     i->left = this->_new_cell(key, val, i, end);
+                //     return (i->left);
+                // }
+                // return (this->_insert_cell(i->left, key, val));
+
+                // i->left = this->_new_cell(key, val, end);
+                // i->empty = false;
+                // _root = i->left;
+                // free(i);
+                // return (_root);
             }
-            if (key < i->value.first)
+            if (key < i->value.first/* && !end*/)
             {
                 if (!i->left)
                 {
-                    i->left = _new_cell(key, val, i);
+                    i->left = this->_new_cell(key, val, i, end);
                     return (i->left);
                 }
-                return (_insert_cell(i->left, key, val));
+                return (this->_insert_cell(i->left, key, val));
             }
             else if (!i->right)
             {
-                i->right = _new_cell(key, val, i);
+                i->right = this->_new_cell(key, val, i);
                 return (i->right);
             }
-            return (_insert_cell(i->right, key, val));
+            else if (i->right->empty)
+            {
+                i->right = this->_new_cell(key, val, i);
+                i->right->right = this->_end;
+                return (i->right);
+            }
+            return (this->_insert_cell(i->right, key, val)); // Maybe todo
         }
 
         cell _find(cell i, key_type key) const
         {
             cell ret;
-            if (i->left && (ret = _find(i->left, key)))
+            if (i->left && (ret = this->_find(i->left, key)))
                 return (ret);
-            if (i->right && (ret = _find(i->right, key)))
+            if (i->right && (ret = this->_find(i->right, key)))
                 return (ret);
             if (i->value.first == key)
                 return (i);
@@ -127,59 +174,85 @@ namespace ft
         {
             if (!del->parent)
             {
-                if (!del->left && !del->right)
+                std::cout << "Warning! No parents!\n";
+                /*if (!del->left && del->right->empty)
                 {
                     delete (del);
+                    delete (this->_end);
                     this->_map_init();
                     return;
                 }
-                else if (!del->left)
+                else */if (!del->left)
+                {
                     this->_root = del->right;
-                else if (!del->right)
+                    // del->right->parent = nullptr;
+                }
+                else/* if (del->right->empty)*/
+                {
                     this->_root = del->left;
-                else
+                    cell tmp = del->left;
+                    while(tmp->right)
+                        tmp = tmp->right;
+                    tmp->right = this->_end;
+                }
+                /*else
                 {
                     cell for_del = del->left;
                     while (for_del->right)
                         for_del = for_del->right;
                     ft::swap(del->value, for_del->value);
-                    _delete_cell(for_del);
+                    this->_delete_cell(for_del);
                     return;
-                }
+                }*/
                 this->_root->parent = nullptr;
                 delete (del);
                 return;
             }
+            std::cout << "With parents???\n";
             cell parent = del->parent;
+            // std::cout << "With parents222\n";
             if (!del->left && !del->right)
             {
                 if (del == parent->left)
                     parent->left = nullptr;
                 else
                     parent->right = nullptr;
-                delete (del);
-                return;
             }
-            if (del->left && !del->right)
+            else if (del->left && !del->right)
             {
                 if (del == parent->left)
                     parent->left = del->left;
                 else
-                    parent->right = del->right;
+                    parent->right = del->left;
                 del->left->parent = parent;
-                delete (del);
-                return;
             }
-            if (!del->left && del->right)
+            else if (!del->left && del->right)
             {
                 if (del == parent->left)
                     parent->left = del->right;
                 else
                     parent->right = del->right;
                 del->right->parent = parent;
-                delete (del);
+            }
+            else if (del->left && del->right->empty)
+            {
+                parent->right = del->left;
+                cell tmp = del->left;
+                while (tmp->right)
+                    tmp = tmp->right;
+                tmp->right = this->_end;
+            }
+            else
+            {
+                cell for_del = del->left;
+                while (for_del->right)
+                    for_del = for_del->right;
+                ft::swap(del->value, for_del->value);
+                this->_delete_cell(for_del);
                 return;
             }
+            delete (del);
+            return;
         }
 
     public:
@@ -203,9 +276,12 @@ namespace ft
         //  --- copy constructor ---
         map(const map &x) { *this = x; }
 
+        //  --- destructor ---
+        ~map() { this->_cell_destruct(this->_root); }
+
         map &operator=(const map &copy)
         {
-            // this->clear(); // TODOTODOTODO
+            this->clear();
             this->_size = 0;
             this->_map_init();
             this->insert(copy.begin(), copy.end());
@@ -229,7 +305,11 @@ namespace ft
             if (tmp != this->end())
                 return (tmp);
             this->_size++;
-            return (iterator(this->_insert_cell(pos.getPtr(), val.first, val.second)));
+            if (pos.getPtr()) //todo correctly
+                _size++;
+            _size--;
+            return (iterator(this->_insert_cell(this->_root, val.first, val.second)));
+            // return (iterator(this->_insert_cell(pos.getPtr(), val.first, val.second)));
         }
 
         template <class InputIterator>
@@ -270,6 +350,7 @@ namespace ft
         // Iterators
         iterator begin()
         {
+            // std::cout << "begin1: " << _root->value.first << "\n";
             if (this->_size == 0)
                 return (this->end());
             cell tmp = this->_root;
@@ -290,10 +371,16 @@ namespace ft
 
         iterator end()
         {
+            // std::cout << "end2: " << _root->value.first << "\n";
             cell tmp = this->_root;
-            while (tmp->right)
+            if (!this->_root->empty)
+            {
+                while (tmp->right)
                 tmp = tmp->right;
-            return (iterator(tmp->right));
+            }
+            // std::cout << "end4: " << tmp->parent->value.first << "\n";
+            return (iterator(tmp));
+            // return (iterator(this->_end()));
         }
 
         const_iterator end() const
@@ -301,7 +388,8 @@ namespace ft
             cell tmp = this->_root;
             while (tmp->right)
                 tmp = tmp->right;
-            return (const_iterator(tmp->right));
+            return (const_iterator(tmp));
+            // return (const_iterator(this->_end()));
         }
 
         reverse_iterator rbegin()
@@ -426,6 +514,12 @@ namespace ft
         {
             while (first != last)
                 this->erase(first++);
+            // {
+            //     iterator tmp = first;
+            //     first++;
+            //     std::cout << "++++++++++++++++++first_key: " << first.getPtr()->value.first << "\n";
+            //     this->erase(tmp);
+            // }
         }
 
         // --- Swap content ---
