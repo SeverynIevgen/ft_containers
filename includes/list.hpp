@@ -17,7 +17,7 @@
 
 namespace ft
 {
-    template <typename T, class Alloc = std::allocator<T>>
+    template <typename T, class Alloc = std::allocator<T> >
     class list
     {
     public:
@@ -186,7 +186,7 @@ namespace ft
 
         size_type max_size() const
         {
-            return (std::numeric_limits<size_type>::max() / sizeof(t_list<T>)); // TODO check
+            return (std::numeric_limits<size_type>::max() / sizeof(t_list<T>));
         }
 
         reference front()

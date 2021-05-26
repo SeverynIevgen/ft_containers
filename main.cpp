@@ -1758,39 +1758,98 @@ struct is_near
 
 int main()
 {
-	ft::list<int> a;
-	ft::list<int> aa;
-	std::list<int> b;
-	std::list<int> bb;
+	std::cout << std::endl
+			  << "iterator insert (iterator hint, const value_type& val);" << std::endl;
 
-	a.push_back(10);
-	a.push_back(10);
-	a.push_back(10);
+	std::map<int, std::string> a;
+	ft::map<int, std::string> b;
 
-	b.push_back(10);
-	b.push_back(10);
-	b.push_back(10);
+	a.insert(std::pair< int, std::string>(45, "123"));
+	a.insert(std::pair< int, std::string>(82, "456"));
+	a.insert(std::pair< int, std::string>(12, "79"));
+	a.insert(std::pair< int, std::string>(57, "dsaf"));
+	a.insert(std::pair< int, std::string>(69, "sdf"));
+	a.insert(std::pair< int, std::string>(123, "asd"));
+	a.insert(std::pair< int, std::string>(457, "zxc"));
+	a.insert(std::pair< int, std::string>(1, "yjyu"));
+	a.insert(std::pair< int, std::string>(457, "mi.l8"));
+	a.insert(std::pair< int, std::string>(418, "xczz"));
+	a.insert(std::pair< int, std::string>(77, "ipi"));
+	a.insert( std::pair< int, std::string>(427, "qwr"));
 
-	aa.push_back(10);
-	aa.push_back(10);
+	b.insert(std::pair< int, std::string>(45, "123"));
+	b.insert(std::pair< int, std::string>(82, "456"));
+	b.insert(std::pair< int, std::string>(12, "79"));
+	b.insert(std::pair< int, std::string>(57, "dsaf"));
+	b.insert(std::pair< int, std::string>(69, "sdf"));
+	b.insert(std::pair< int, std::string>(123, "asd"));
+	b.insert(std::pair< int, std::string>(457, "zxc"));
+	b.insert(std::pair< int, std::string>(1, "yjyu"));
+	b.insert(std::pair< int, std::string>(457, "mi.l8"));
+	b.insert(std::pair< int, std::string>(418, "xczz"));
+	b.insert(std::pair< int, std::string>(77, "ipi"));
+	b.insert(std::pair< int, std::string>(427, "qwr"));
 
-	bb.push_back(10);
-	bb.push_back(10);
+	// print_2m(a, b);
+	std::cout << "\n__________Std::a__________" << std::endl;
+	for (std::map<int, std::string>::iterator it = a.begin(); it != a.end(); ++it)
+		std::cout << it->first << " => " << it->second << ";\t";
+	std::cout << "\n__________Ft::b__________" << std::endl;
+	for (ft::map<int, std::string>::iterator it = b.begin(); it != b.end(); ++it)
+		std::cout << it->first << " => " << it->second << ";\t";
+	std::cout << '\n';
 
-	std::cout << "------------------" << std::endl;
-	std::cout << "ft::list  == " << (a == aa) << std::endl;
-	std::cout << "std::list == " << (b == bb) << std::endl;
-	std::cout << "ft::list  != " << (a != aa) << std::endl;
-	std::cout << "std::list != " << (b != bb) << std::endl;
-	std::cout << "ft::list  <  " << (a < aa) << std::endl;
-	std::cout << "std::list <  " << (b < bb) << std::endl;
-	std::cout << "ft::list  <= " << (a <= aa) << std::endl;
-	std::cout << "std::list <= " << (b <= bb) << std::endl;
-	std::cout << "ft::list  >  " << (a > aa) << std::endl;
-	std::cout << "std::list >  " << (b > bb) << std::endl;
-	std::cout << "ft::list  >= " << (a >= aa) << std::endl;
-	std::cout << "std::list >= " << (b >= bb) << std::endl;
-	std::cout << "------------------" << std::endl;
+	std::map < int, std::string>::iterator beg1 = a.begin();
+	ft::map < int, std::string>::iterator beg2 = b.begin();
+	beg1++;
+	beg1++;
+	beg1++;
+	beg2++;
+	beg2++;
+	beg2++;
+	a.insert(beg1, std::pair< int, std::string >(1267, "gggg"));
+	b.insert(beg2, std::pair< int, std::string >(1267, "gggg"));
+	std::cout << "\n__________Std::a__________" << std::endl;
+	for (std::map<int, std::string>::iterator it = a.begin(); it != a.end(); ++it)
+		std::cout << it->first << " => " << it->second << ";\t";
+	std::cout << "\n__________Ft::b__________" << std::endl;
+	for (ft::map<int, std::string>::iterator it = b.begin(); it != b.end(); ++it)
+		std::cout << it->first << " => " << it->second << ";\t";
+	std::cout << '\n';
+
+	std::map < int, std::string>::iterator beg12 = a.begin();
+	ft::map < int, std::string>::iterator beg22 = b.begin();
+	beg12++;
+	beg12++;
+	beg12++;
+	beg22++;
+	beg22++;
+	beg22++;
+	a.insert(beg12, std::pair< int, std::string >(2, "gggg"));
+	b.insert(beg22, std::pair< int, std::string >(2, "gggg"));
+
+
+
+	// std::cout << "std ... " << (--(a.end()))->first  << std::endl;
+	// std::cout << "ft ... " << (--(b.end()))->first  << std::endl;
+	// a.erase(a.begin(), --(a.end()));
+
+	// ft::map<int, std::string>::iterator bitr = b.end();
+	// bitr--;
+	// bitr--;
+	// std::cout << "\nbit: " << bitr.getPtr()->value.first << std::endl;
+	// b.erase(b.begin(), ++(b.begin()));
+	// b.erase(b.begin(), --(b.end()));
+	// std::cout << "\nSize of b: " << b.size() << std::endl;
+
+	// print_2m(a, b);
+	std::cout << "\n__________Std::a__________" << std::endl;
+	for (std::map<int, std::string>::iterator it = a.begin(); it != a.end(); ++it)
+		std::cout << it->first << " => " << it->second << ";\t";
+	std::cout << "\n__________Ft::b__________" << std::endl;
+	for (ft::map<int, std::string>::iterator it = b.begin(); it != b.end(); ++it)
+		std::cout << it->first << " => " << it->second << ";\t";
+	std::cout << '\n';
 
 	return 0;
 }
