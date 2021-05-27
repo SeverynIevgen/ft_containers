@@ -849,50 +849,25 @@ private:
     pointer _ptr;
     pointer _incr(pointer ptr)
     {
-        // pointer p_next;
-        // if (ptr->right)
-        // {
-        //     p_next = ptr->right;
-        //     while (p_next->left)
-        //         p_next = p_next->left;
-        // }
-        // else
-        // {
-        //     p_next = ptr;
-        //     while (p_next->parent && p_next == p_next->parent->right)
-        //         p_next = p_next->parent;
-        //     p_next = p_next->parent;
-        // }
-        // return (p_next);
-
-
-        if (ptr && ptr->empty)
-            return (ptr->parent);
-        if (!ptr || ptr->empty)
-            return (ptr);
+        pointer p_next;
         if (ptr->right)
         {
-            ptr = ptr->right;
-            while (ptr->left)
-                ptr = ptr->left;
+            p_next = ptr->right;
+            while (p_next->left)
+                p_next = p_next->left;
         }
-        else if (ptr->parent && ptr->parent->left == ptr)
-            ptr = ptr->parent;
         else
         {
-            pointer tmp = ptr;
-            while (ptr->parent && ptr->parent->right == ptr)
-                ptr = ptr->parent;
-            if (!ptr->parent)
-                return (tmp->right);
-            ptr = ptr->parent;
+            p_next = ptr;
+            while (p_next->parent && p_next == p_next->parent->right)
+                p_next = p_next->parent;
+            p_next = p_next->parent;
         }
-        return (ptr);
+        return (p_next);
     };
 
     pointer _decr(pointer ptr)
     {
-
         pointer p_prev;
         if (ptr->left)
         {
