@@ -25,7 +25,7 @@ NAME = test
 # HEADER = includes/utils.hpp includes/stack.hpp
 
 # SRCS = mainQueue.cpp
-# HEADER = includes/utils.hpp includes/queue.hpp
+# HEADER = includes/utils.hpp includes/queue.hpp includes/deue.hpp
 
 SRCS = main.cpp
 HEADER = includes/*.hpp
