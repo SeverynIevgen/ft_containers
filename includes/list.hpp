@@ -59,8 +59,6 @@ namespace ft
         explicit list(int n, const value_type &val = value_type(),
                       const allocator_type &alloc = allocator_type()) : _size(0), _alloc(alloc)
         {
-            // _end = _nodeAlloc.allocate(1);
-            // _nodeAlloc.construct(_end);
             _end = new t_list<T>;
             _end->value = new T();
             _end->prev = _end;
@@ -75,13 +73,9 @@ namespace ft
         // Constructs a container with as many elements as the range [first,last),
         // with each element constructed from its corresponding element in that range, in the same order.
         template <class InputIterator>
-        // list(InputIterator first, typename enable_if<std::is_class<InputIterator>::value, InputIterator>::type last,
-        // 	 const Alloc &alloc = Alloc()): _size(0), _alloc(alloc) {
         list(InputIterator first, InputIterator last,
              const allocator_type &alloc = allocator_type()) : _size(0), _alloc(alloc)
         {
-            // _end = _nodeAlloc.allocate(1);
-            // _nodeAlloc.construct(_end);
             _end = new t_list<T>;
             _end->value = new T();
             _end->prev = _end;
@@ -113,8 +107,6 @@ namespace ft
             clear();
             delete (_end->value);
             delete (_end);
-            // _nodeAlloc.destroy(_end);
-            // _nodeAlloc.deallocate(_end, 1);
         }
 
         //  --- Assign content ---
@@ -136,13 +128,6 @@ namespace ft
         {
             return (iterator(_end));
         }
-
-        // template <class InputIterator, class Distance>
-        // void    advance (InputIterator& it, Distance n) {
-        //     while (it != end() && n--)
-        //         ++it;
-        //     return (it);
-        // }
 
         const_iterator begin() const
         {
@@ -212,8 +197,6 @@ namespace ft
         template <class InputIterator>
         void assign(InputIterator first, InputIterator last)
         {
-            // void assign (iterator first, iterator last) {
-            // void assign (InputIterator first, iterator typename enable_if<std::is_class<InputIterator>::value, InputIterator>::type last) {
             clear();
             while (first != last)
             {
@@ -223,7 +206,6 @@ namespace ft
         }
 
         // template <class T1>
-        // void assign (size_type n, T1 val) {
         void assign(int n, const value_type &val)
         {
             clear();
@@ -297,12 +279,10 @@ namespace ft
 
         // Delete first element
         void pop_front()
-        // void pop_back()
         {
             if (_size == 1)
             {
                 pop_back();
-                // pop_front();
                 return;
             }
             t_list<T> *temp;
@@ -321,8 +301,6 @@ namespace ft
         {
             t_list<T> *tmp = new t_list<T>;
             tmp->value = new T();
-            // tmp->value = _alloc.allocate(1);
-            // tmp->value = *val;
             _alloc.construct(tmp->value, val);
             tmp->next = position.getValue();
             tmp->prev = position.getValue()->prev;
@@ -347,8 +325,6 @@ namespace ft
         template <class InputIterator>
         void insert(iterator position, InputIterator first, InputIterator last)
         {
-            // void insert(iterator position, InputIterator first,
-            // 	typename enable_if<std::is_class<InputIterator>::value, InputIterator>::type last) {
             for (InputIterator it = first; it != last; ++it)
                 insert(position, *it);
         }

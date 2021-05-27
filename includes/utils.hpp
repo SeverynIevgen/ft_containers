@@ -13,7 +13,7 @@
 #ifndef UTILS_HPP
 #define UTILS_HPP
 
-// # include <memory>
+#include <memory>
 #include <iostream>
 #include <limits>
 #include <memory>
@@ -108,13 +108,6 @@ public:
     reference operator*() const { return (*_ptr->value); }
     pointer operator->() const { return (_ptr->value); }
     t_list<T> *getValue() const { return (_ptr); }
-
-    // template <class InputIterator, class Distance>
-    // void advance (InputIterator& it, Distance n) {
-    // void advance(bidirectional_iterator it, size_t n) {
-    //     while (/*it != end() && */n--)
-    //         ++it;
-    // }
 };
 
 template <class T>
@@ -872,9 +865,10 @@ private:
         }
         return (p_next);
     };
+
     pointer _decr(pointer ptr)
     {
-        pointer p_prev = nullptr;
+        pointer p_prev;
         if (ptr->left)
         {
             p_prev = ptr->left;

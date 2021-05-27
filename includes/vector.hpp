@@ -42,11 +42,9 @@ namespace ft
 
     public:
         //  --- empty container constructor (default constructor) ---
-        explicit vector(const allocator_type &alloc = allocator_type()) : // _node(nullptr), _size(0), _capacity(0), _alloc(alloc) {}
-                                                                          _size(0), _capacity(0), _alloc(alloc)
+        explicit vector(const allocator_type &alloc = allocator_type()) : _size(0), _capacity(0), _alloc(alloc)
         {
             _node = _alloc.allocate(1);
-            // *_node = 0;
         }
 
         //  --- fill constructor ---
@@ -62,8 +60,6 @@ namespace ft
         // Constructs a container with as many elements as the range [first,last),
         // with each element constructed from its corresponding element in that range, in the same order.
         template <class InputIterator>
-        // vector(InputIterator first, typename enable_if<std::is_class<InputIterator>::value,
-        //     InputIterator>::type last, const allocator_type &alloc = allocator_type()): _alloc(alloc) {
         vector(InputIterator first, InputIterator last,
                const allocator_type &alloc = allocator_type()) : _alloc(alloc)
         {
@@ -243,18 +239,11 @@ namespace ft
             size_t n = last - first;
             if (n > _capacity)
                 reserve(n);
-            // _size = n;
             while (first != last)
             {
-                // push_back(*first);
                 insert(end(), *first);
                 ++first;
             }
-
-            // while (n--) {
-            //     _node[n] = *last;
-            //     --last;
-            // }
         }
 
         // -fill-
@@ -331,8 +320,6 @@ namespace ft
         template <class InputIterator>
         void insert(iterator position, InputIterator first, InputIterator last)
         {
-            // void insert(iterator position, InputIterator first,
-            // 	typename enable_if<std::is_class<InputIterator>::value, InputIterator>::type last) {
             iterator beg = this->begin();
             size_type ind = position - beg;
             size_type end = _size;
@@ -481,10 +468,6 @@ namespace ft
         {
             return (!(lhs < rhs));
         }
-
-        // friend void swap(ft::vector<T, Alloc> &x, ft::vector<T, Alloc> &y) {
-        //     x.swap(y);
-        // }
     };
 
     // Exchanges the contents of two vectors
