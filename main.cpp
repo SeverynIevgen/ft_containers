@@ -3,14 +3,15 @@
 #include "includes/map.hpp"
 #include "includes/stack.hpp"
 #include "includes/queue.hpp"
+#include "includes/deque.hpp"
 
 #include <list>
 #include <vector>
 #include <map>
 #include <stack>
 #include <queue>
-
 #include <deque>
+
 #include <iostream>
 #include <cmath>
 
@@ -1869,7 +1870,11 @@ int main()
 {
 	std::cout << "-----------------------Something--------------------------" << std::endl;
 
+	std::cout  << std::endl  << "Count: 100, value 42" << std::endl;
+		ft::deque<int> a(100, 42);
+		std::deque<int> b(100, 42);
 	
+
 
 	return 0;
 }
