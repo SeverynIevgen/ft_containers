@@ -1866,15 +1866,33 @@ struct is_near
 // }
 
 
+void print_two (std::deque<int> &b, ft::deque<int> &a)
+{
+	std::cout << "ft::deque.size(): " << a.size() << std::endl;
+	std::cout << "std::deque.size(): " << b.size() << std::endl;
+	std::cout << "-------------------------" << std::endl;
+	std::cout << "Значения:" << std::endl;
+	std::cout << "std::deque: ";
+	for (std::deque<int>::iterator beg = b.begin(); beg != b.end(); beg++)
+		std::cout << *beg << " ";
+	std::cout << std::endl;
+	std::cout << "ft::deque:  ";
+	for (ft::deque<int>::iterator beg = a.begin(); beg != a.end(); beg++)
+		std::cout << *beg << " ";
+	std::cout << std::endl;
+	std::cout << "-------------------------" << std::endl;
+	
+}
+
 int main()
 {
+
 	std::cout << "-----------------------Something--------------------------" << std::endl;
 
 	std::cout  << std::endl  << "Count: 100, value 42" << std::endl;
-		ft::deque<int> a(100, 42);
-		std::deque<int> b(100, 42);
-	
-
+	ft::deque<int> a(100, 42);
+	std::deque<int> b(100, 42);
+	print_two(b, a);
 
 	return 0;
 }
