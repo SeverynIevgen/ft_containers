@@ -288,8 +288,6 @@
 //     bar['b'] = 22;
 //     bar['c'] = 33;
 
-
-// 	std::cout << "Startttt\n";
 //     foo.swap(bar);
 
 //     std::cout << "foo contains:\n";
@@ -1671,228 +1669,43 @@ struct is_near
 // 	return 0;
 // }
 
-// // --------------list::list--------------
-// int main()
-// {
-// 	// constructors used in the same order as described above:
-// 	ft::list<int> first;							   // empty list of ints
-// 	ft::list<int> second(4, 100);					   // four ints with value 100
-// 	ft::list<int> third(second.begin(), second.end()); // iterating through second
-// 	ft::list<int> fourth(third);					   // a copy of third
-
-// 	// the iterator constructor can also be used to construct from arrays:
-// 	int myints[] = {16, 2, 77, 29};
-// 	ft::list<int> fifth(myints, myints + sizeof(myints) / sizeof(int));
-
-// 	std::cout << "The contents of the first are: ";
-// 	for (ft::list<int>::iterator it = first.begin(); it != first.end(); it++)
-// 		std::cout << *it << ' ';
-// 	std::cout << '\n';
-
-// 	std::cout << "The contents of the second are: ";
-// 	for (ft::list<int>::iterator it = second.begin(); it != second.end(); it++)
-// 		std::cout << *it << ' ';
-// 	std::cout << '\n';
-
-// 	std::cout << "The contents of the third are: ";
-// 	for (ft::list<int>::iterator it = third.begin(); it != third.end(); it++)
-// 		std::cout << *it << ' ';
-// 	std::cout << '\n';
-
-// 	std::cout << "The contents of the fourth are: ";
-// 	for (ft::list<int>::iterator it = fourth.begin(); it != fourth.end(); it++)
-// 		std::cout << *it << ' ';
-// 	std::cout << '\n';
-
-// 	std::cout << "The contents of the fifth are: ";
-// 	for (ft::list<int>::iterator it = fifth.begin(); it != fifth.end(); it++)
-// 		std::cout << *it << ' ';
-// 	std::cout << '\n';
-
-// 	return 0;
-// }
-
-// int main()
-// {
-// 	ft::list<int> mylist1, mylist2;
-// 	ft::list<int>::iterator it;
-
-// 	// set some initial values:
-// 	for (int i = 1; i <= 4; ++i)
-// 		mylist1.push_back(i); // mylist1: 1 2 3 4
-
-// 	for (int i = 1; i <= 3; ++i)
-// 		mylist2.push_back(i * 10); // mylist2: 10 20 30
-
-// 	it = mylist1.end();
-// 	++it; ++it; // points to 2 ?
-// 	std::cout << "*it: " << *it << std::endl; // "it" points now to 2
-
-// 	mylist1.splice(it, mylist2); // mylist1: 1 10 20 30 2 3 4
-// 								 // mylist2 (empty)
-// 								 // "it" still points to 2 (the 5th element)
-
-// 	mylist2.splice(mylist2.begin(), mylist1, it);
-// 	// mylist1: 1 10 20 30 3 4
-// 	// mylist2: 2
-// 	// "it" is now invalid.
-// 	std::cout << "*it: " << *it << std::endl;
-// 	it = mylist1.begin();
-// 	++it;
-// 	++it;
-// 	++it;
-// 	std::cout << "*it: " << *it << std::endl; // "it" points now to 30
-
-// 	mylist1.splice(mylist1.begin(), mylist1, it, mylist1.end());
-// 	// mylist1: 30 3 4 1 10 20
-
-// 	std::cout << "mylist1 contains:";
-// 	for (it = mylist1.begin(); it != mylist1.end(); ++it)
-// 		std::cout << ' ' << *it;
-// 	std::cout << '\n';
-
-// 	std::cout << "mylist2 contains:";
-// 	for (it = mylist2.begin(); it != mylist2.end(); ++it)
-// 		std::cout << ' ' << *it;
-// 	std::cout << '\n';
-
-// 	return 0;
-// }
-
-// int main()
-// {
-// 	std::cout << std::endl
-// 			  << "iterator insert (iterator hint, const value_type& val);" << std::endl;
-
-// 	std::map<int, std::string> a;
-// 	ft::map<int, std::string> b;
-
-// 	a.insert(std::pair<int, std::string>(45, "123"));
-// 	a.insert(std::pair<int, std::string>(82, "456"));
-// 	a.insert(std::pair<int, std::string>(12, "79"));
-// 	a.insert(std::pair<int, std::string>(57, "dsaf"));
-// 	a.insert(std::pair<int, std::string>(69, "sdf"));
-// 	a.insert(std::pair<int, std::string>(123, "asd"));
-// 	a.insert(std::pair<int, std::string>(457, "zxc"));
-// 	a.insert(std::pair<int, std::string>(1, "yjyu"));
-// 	a.insert(std::pair<int, std::string>(457, "mi.l8"));
-// 	a.insert(std::pair<int, std::string>(418, "xczz"));
-// 	a.insert(std::pair<int, std::string>(77, "ipi"));
-// 	a.insert(std::pair<int, std::string>(427, "qwr"));
-
-// 	b.insert(std::pair<int, std::string>(45, "123"));
-// 	b.insert(std::pair<int, std::string>(82, "456"));
-// 	b.insert(std::pair<int, std::string>(12, "79"));
-// 	b.insert(std::pair<int, std::string>(57, "dsaf"));
-// 	b.insert(std::pair<int, std::string>(69, "sdf"));
-// 	b.insert(std::pair<int, std::string>(123, "asd"));
-// 	b.insert(std::pair<int, std::string>(457, "zxc"));
-// 	b.insert(std::pair<int, std::string>(1, "yjyu"));
-// 	b.insert(std::pair<int, std::string>(457, "mi.l8"));
-// 	b.insert(std::pair<int, std::string>(418, "xczz"));
-// 	b.insert(std::pair<int, std::string>(77, "ipi"));
-// 	b.insert(std::pair<int, std::string>(427, "qwr"));
-
-// 	// print_2m(a, b);
-// 	std::cout << "\n__________Std::a__________" << std::endl;
-// 	for (std::map<int, std::string>::iterator it = a.begin(); it != a.end(); ++it)
-// 		std::cout << it->first << " => " << it->second << ";\t";
-// 	std::cout << "\n__________Ft::b__________" << std::endl;
-// 	for (ft::map<int, std::string>::iterator it = b.begin(); it != b.end(); ++it)
-// 		std::cout << it->first << " => " << it->second << ";\t";
-// 	std::cout << '\n';
-
-// 	std::map<int, std::string>::iterator beg1 = a.begin();
-// 	ft::map<int, std::string>::iterator beg2 = b.begin();
-// 	beg1++;
-// 	beg1++;
-// 	beg1++;
-// 	beg2++;
-// 	beg2++;
-// 	beg2++;
-// 	a.insert(beg1, std::pair<int, std::string>(1267, "gggg"));
-// 	b.insert(beg2, std::pair<int, std::string>(1267, "gggg"));
-// 	std::cout << "\n__________Std::a__________" << std::endl;
-// 	for (std::map<int, std::string>::iterator it = a.begin(); it != a.end(); ++it)
-// 		std::cout << it->first << " => " << it->second << ";\t";
-// 	std::cout << "\n__________Ft::b__________" << std::endl;
-// 	for (ft::map<int, std::string>::iterator it = b.begin(); it != b.end(); ++it)
-// 		std::cout << it->first << " => " << it->second << ";\t";
-// 	std::cout << '\n';
-
-// 	std::map<int, std::string>::iterator beg12 = a.begin();
-// 	ft::map<int, std::string>::iterator beg22 = b.begin();
-// 	beg12++;
-// 	beg12++;
-// 	beg12++;
-// 	beg22++;
-// 	beg22++;
-// 	beg22++;
-// 	a.insert(beg12, std::pair<int, std::string>(2, "gggg"));
-// 	b.insert(beg22, std::pair<int, std::string>(2, "gggg"));
-
-// 	std::cout << "std ... " << (--(a.end()))->first << std::endl;
-// 	// std::cout << "ft ... " << (--(b.end()))->first  << std::endl;
-// 	// std::cout << "ft ... " << (--(b.end()))->first  << std::endl;
-// 	a.erase(a.begin(), --(a.end()));
-
-// 	ft::map<int, std::string>::iterator bitr = b.begin();
-// 	// ft::map<int, std::string>::iterator bitr2 = b.begin();
-// 	bitr++;
-// 	bitr++;
-// 	bitr--;
-// 	bitr--;
-// 	bitr++;
-// 	// bitr++;
-// 	// bitr++;
-// 	std::cout << "\nbit: " << bitr.getPtr()->value.first << std::endl;
-// 	// b.erase(b.begin(), ++(b.begin()));
-// 	// b.erase(++(b.begin()), (b.end()));
-// 	b.erase((b.begin()), bitr);
-// 	std::cout << "\nSize of b: " << b.size() << std::endl;
-// 	// bitr2 = b.begin();
-// 	/*bitr++; bitr++; bitr++; bitr++; bitr++; bitr++; bitr++; bitr++; bitr++; bitr++;*/
-// 	// std::cout << "\n-------------Key:: " << bitr2.getPtr()->value.first << std::endl;
-// 	// print_2m(a, b);
-// 	std::cout << "\n__________Std::a__________" << std::endl;
-// 	for (std::map<int, std::string>::iterator it = a.begin(); it != a.end(); ++it)
-// 		std::cout << it->first << " => " << it->second << ";\t";
-// 	std::cout << "\n__________Ft::b__________" << std::endl;
-// 	for (ft::map<int, std::string>::iterator it = b.begin(); it != b.end(); ++it)
-// 		std::cout << it->first << " => " << it->second << ";\t";
-// 	std::cout << '\n';
-
-// 	return 0;
-// }
-
-
-void print_two (std::deque<int> &b, ft::deque<int> &a)
-{
-	std::cout << "ft::deque.size(): " << a.size() << std::endl;
-	std::cout << "std::deque.size(): " << b.size() << std::endl;
-	std::cout << "-------------------------" << std::endl;
-	std::cout << "Значения:" << std::endl;
-	std::cout << "std::deque: ";
-	for (std::deque<int>::iterator beg = b.begin(); beg != b.end(); beg++)
-		std::cout << *beg << " ";
-	std::cout << std::endl;
-	std::cout << "ft::deque:  ";
-	for (ft::deque<int>::iterator beg = a.begin(); beg != a.end(); beg++)
-		std::cout << *beg << " ";
-	std::cout << std::endl;
-	std::cout << "-------------------------" << std::endl;
-	
-}
-
+// --------------list::list--------------
 int main()
 {
+	// constructors used in the same order as described above:
+	ft::list<int> first;							   // empty list of ints
+	ft::list<int> second(4, 100);					   // four ints with value 100
+	ft::list<int> third(second.begin(), second.end()); // iterating through second
+	ft::list<int> fourth(third);					   // a copy of third
 
-	std::cout << "-----------------------Something--------------------------" << std::endl;
+	// the iterator constructor can also be used to construct from arrays:
+	int myints[] = {16, 2, 77, 29};
+	ft::list<int> fifth(myints, myints + sizeof(myints) / sizeof(int));
 
-	std::cout  << std::endl  << "Count: 100, value 42" << std::endl;
-	ft::deque<int> a(100, 42);
-	std::deque<int> b(100, 42);
-	print_two(b, a);
+	std::cout << "The contents of the first are: ";
+	for (ft::list<int>::iterator it = first.begin(); it != first.end(); it++)
+		std::cout << *it << ' ';
+	std::cout << '\n';
+
+	std::cout << "The contents of the second are: ";
+	for (ft::list<int>::iterator it = second.begin(); it != second.end(); it++)
+		std::cout << *it << ' ';
+	std::cout << '\n';
+
+	std::cout << "The contents of the third are: ";
+	for (ft::list<int>::iterator it = third.begin(); it != third.end(); it++)
+		std::cout << *it << ' ';
+	std::cout << '\n';
+
+	std::cout << "The contents of the fourth are: ";
+	for (ft::list<int>::iterator it = fourth.begin(); it != fourth.end(); it++)
+		std::cout << *it << ' ';
+	std::cout << '\n';
+
+	std::cout << "The contents of the fifth are: ";
+	for (ft::list<int>::iterator it = fifth.begin(); it != fifth.end(); it++)
+		std::cout << *it << ' ';
+	std::cout << '\n';
 
 	return 0;
 }
